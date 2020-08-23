@@ -1,0 +1,84 @@
+@media only screen and (max-width: 900px) {
+    .Decider {
+        height: 350px;
+        width: 100%;
+        background-color: aliceblue;
+    }
+
+    .MainAuth {
+        width: 100%;
+        background-color: aquamarine;
+    }
+}
+
+@keyframes leftGrow {
+    0% {
+        -webkit-transform: scaleX(0.4);
+        transform: scaleX(0.4);
+        -webkit-transform-origin: 0% 0%;
+        transform-origin: 0% 0%;
+    }
+
+    100% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: 0% 0%;
+        transform-origin: 0% 0%;
+    }
+}
+
+.AuthPage {}
+
+.Decider {
+    float: left;
+    height: 100vh;
+    width: 30%;
+    background-color: #ED6A5A;
+    animation-name: leftGrow;
+    animation-duration: 1s;
+}
+
+.IconName {
+    margin-top: 100px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Icon {
+    float: left;
+}
+
+.IconNameName {
+    float: left;
+}
+
+.Choices {
+    width: 90%;
+    margin-top: 100px;
+    padding: 0 0 0 5%;
+}
+
+.ItemChoice {
+    text-align: center;
+    font-family: 'Mulish';
+    text-transform: uppercase;
+    font-size: 20pt;
+    border-radius: 5px;
+    background-color: rgb(235, 96, 78);
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.ItemChoice:hover {
+    background-color: rgb(235, 122, 107);
+}
+
+.MainAuth {
+    float: left;
+    height: 100vh;
+    width: 70%;
+}

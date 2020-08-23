@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Geo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap');
+
+.CurrentCaseStudy {
+    margin-top: 3%;
+    height: fit-content;
+    width: 60%;
+    margin-left: 20%;
+    padding: 5px;
+}
+
+.NoCaseStudy {
+    margin-top: 3%;
+    height: fit-content;
+    width: 60%;
+    margin-left: 20%;
+    padding: 5px;
+}
+
+.UploadFile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin-top: 10px;
+    transition: ease-in-out 0.2s;
+}
+
+.UploadFilebtn {
+    border: none;
+    border-radius: 3px;
+    background-color: #5D576B;
+    color: white;
+    font-size: 16pt;
+    font-family: 'Mulish';
+    text-transform: uppercase;
+    padding: 7px;
+    margin-left: 20px;
+    transition: ease-in-out 0.2s;
+}
+
+.UploadFilebtn:hover {
+    letter-spacing: 1px;
+    color: black;
+    background-color: #ED6A5A;
+}
+
+.SubmitButtonFile {
+    border: none;
+    border-radius: 3px;
+    background-color: #ED6A5A;
+    color: white;
+    font-size: 16pt;
+    font-family: 'Mulish';
+    text-transform: uppercase;
+    padding: 7px;
+    margin-top: 8px;
+    float: left;
+    margin-left: 40px;
+    transition: ease-in-out 0.2s;
+}
+
+.SubmitButtonFile:hover {
+    background-color: #5D576B;
+    letter-spacing: 1px;
+    color: black;
+}
+
+.HeadingCase {
+    font-family: 'Geo';
+    font-size: 20pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #5D576B;
+}
+
+.StudyName {
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18pt;
+    font-family: 'Mulish', sans-serif;
+    text-align: center;
+}
+
+.StudyName:hover {
+    text-decoration: underline;
+    text-decoration-color: gray;
+}
+
+.GiveCase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.GiveCaseButton {
+    padding: 8px;
+    font-family: 'Geo';
+    font-size: 17pt;
+    border: none;
+    background-color: #9BC1BC;
+    color: #5D576B;
+}
+
+.GiveCaseButton:hover {
+    color: black;
+}
+
+.StudentList {
+    margin-top: 4%;
+    padding: 2px;
+}
+
+.StudentTile {
+    padding: 20px 0 0 2%;
+    height: 50px;
+    background-color: #E6EBE0;
+    width: 98%;
+    margin-top: 1px;
+}
+
+.Name {
+    font-family: 'Mulish';
+    color: black;
+    font-size: 18pt;
+    float: left;
+    text-transform: uppercase;
+}
+
+.File {
+    float: left;
+    margin-left: 74%;
+}
+
+@media only screen and (max-width: 900px) {
+    .Name {
+        font-size: 12pt;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    .StudentTile {
+        padding: 0px 0 20px 5%;
+        height: 40px;
+        background-color: #E6EBE0;
+        width: 95%;
+        margin-top: 1px;
+    }
+
+    .File {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 27%;
+        margin-top: 11px;
+    }
+
+    .SubmitButtonFile {
+        border: none;
+        border-radius: 3px;
+        background-color: #ED6A5A;
+        color: white;
+        font-size: 10pt;
+        font-family: 'Mulish';
+        text-transform: uppercase;
+        padding: 7px;
+        margin-top: 8px;
+        transition: ease-in-out 0.2s;
+    }
+
+    .UploadFile {
+        margin-top: 10px;
+        transition: ease-in-out 0.2s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .UploadFilebtn {
+        border: none;
+        border-radius: 3px;
+        background-color: #5D576B;
+        color: white;
+        font-size: 10pt;
+        font-family: 'Mulish';
+        text-transform: uppercase;
+        padding: 7px;
+        transition: ease-in-out 0.2s;
+        transition: ease-in-out 0.2s;
+    }
+
+    .CurrentCaseStudy {
+        margin-top: 3%;
+        height: fit-content;
+        width: 80%;
+        margin-left: 10%;
+        padding: 5px;
+    }
+    
+    .NoCaseStudy {
+        margin-top: 3%;
+        height: fit-content;
+        width: 80%;
+        margin-left: 10%;
+        padding: 5px;
+    }
+    
+}
