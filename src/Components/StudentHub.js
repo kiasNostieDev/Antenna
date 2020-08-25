@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import SettingsInputAntenna from "@material-ui/icons/SettingsInputAntenna";
 import "./Styles/StudentHub.css";
-import axios from 'axios';
+import { storage, fb } from "../FIrebase/firebase";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,9 +43,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function StudentHub() {
 
-  const [file, setFile] = useState('')
+  const [file, setFile] = useState()
   const [progress, setProgress] = useState(0)
   const el = useRef()
+  const allInputs = {imgURL: ''}
+  const [fileurl, setFileURL] = useState(allInputs)
 
   const classes = useStyles();
   function AppBarCustom() {
@@ -90,14 +92,23 @@ export default function StudentHub() {
 
   function handleChange(event){
     setProgress(0)
-    const file = event.target.files[0]
+    const imageFile = event.target.files[0]
+    console.log(imageFile)
+    setFile(imagefile => (imageFile))
     console.log(file)
-    setFile(file)
   }
 
   function handleUpload(){
-    const formData = new FormData()
-    formData.append('file',file)
+    const fbstorage = fb.storage().ref('/docs/solutions')
+    const imageUpload = fbstorage.child(file.name)
+    imageUpload.put(file).then((snapshot)=>{
+      imageUpload.getDownloadURL().then((url)=>{
+        setFileURL(url)
+        console.log(url)
+      })
+    },(err)=>{
+      console.log(err)
+    })
   }
 
   return (
@@ -109,7 +120,7 @@ export default function StudentHub() {
         <input type="file" ref={el} onChange={handleChange} className="Uploadbtn"/>
       </div>
       <div className="Submit">
-          <button className="SubmitButton" onClick={handleUpload}>submit</button>
+          <button className="SubmitButton" onClick={handleUpload}>UploadFile</button>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import SettingsInputAntenna from "@material-ui/icons/SettingsInputAntenna";
 import TextField from "@material-ui/core/TextField";
+import { fb } from "../FIrebase/firebase";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,21 +34,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AdminHub() {
-  const [file, setFile] = useState("");
-  const [progress, setProgress] = useState(0);
-  const el = useRef();
+
+  const [file, setFile] = useState()
+  const [progress, setProgress] = useState(0)
+  const el = useRef()
+  const allInputs = {imgURL: ''}
+  const [fileurl, setFileURL] = useState(allInputs)
+
   const classes = useStyles();
 
   function handleChange(event) {
-    setProgress(0);
-    const file = event.target.files[0];
-    console.log(file);
-    setFile(file);
+    setProgress(0)
+    const imageFile = event.target.files[0]
+    console.log(imageFile)
+    setFile(imagefile => (imageFile))
+    console.log(file)
   }
 
   function handleUpload() {
-    const formData = new FormData();
-    formData.append("file", file);
+    const storage = fb.storage().ref('docs/admin')
+    const imageUpload = storage.child(file.name)
+    imageUpload.put(file).then((snapshot)=>{
+      imageUpload.getDownloadURL().then((url)=>{
+        setFileURL(url)
+        console.log(url)
+      })
+    },(err)=>{
+      console.log(err)
+    })
   }
 
   function AppBarCustom() {
@@ -80,11 +94,6 @@ export default function AdminHub() {
         <div className="HeadingCase">Current_Case_Study</div>
         <div className="StudyName">
           Case Study to deal with normal problems in C
-        </div>
-        <div className="UploadFile">
-          <button className="SubmitButtonFile" onClick={handleUpload}>
-            PatchToAntenna
-          </button>
         </div>
       </div>
     );
@@ -162,7 +171,8 @@ export default function AdminHub() {
   return (
     <div>
       <AppBarCustom />
-      <CurrentCaseStudy />
+      <NoCaseStudy />
+      <CurrentCaseStudy/>
       <StudentList />
     </div>
   );
