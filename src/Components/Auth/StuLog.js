@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styles/StuLog.css";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
@@ -10,7 +10,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function StuLog() {
-  const classes = useStyles();
+  const [phone, setPhone] = useState('')
+  const [pwd, setPwd] = useState('')
+  const classes = useStyles()
+
+  function handleClick(){}
+
   return (
     <div className="StuLogAuth">
       <div className="StuLogHeading">Student Login</div>
@@ -20,6 +25,9 @@ export default function StuLog() {
           label="Phone"
           className={classes.field}
           variant="outlined"
+          onChange={e => {
+            setPhone(e.target.value)
+          }}
         />
       </div>
       <div className="BoxAdmin">
@@ -28,10 +36,14 @@ export default function StuLog() {
           label="Password"
           className={classes.field}
           variant="outlined"
+          type='password'
+          onChange={e => {
+            setPwd(e.target.value)
+          }}
         />
       </div>
       <div className="StuLogin">
-          <button className="btnlogin">COnnect_antenna</button>
+          <button className="btnlogin" onClick={handleClick}>COnnect_antenna</button>
       </div>
     </div>
   );

@@ -1,77 +1,118 @@
-import React from "react";
-import "../Styles/StuSi.css";
-import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import React, { useState } from 'react'
+import '../Styles/StuSi.css'
+import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import FormControl from '@material-ui/core/FormControl'
+import Select from '@material-ui/core/Select'
+import { names } from '../../data'
+import axios from 'axios'
 
-const useStyles = makeStyles((theme) => ({
+const data = {
+  studentName: '',
+  mobileNumber: '',
+  email: '',
+  password: ''
+}
+
+const useStyles = makeStyles(theme => ({
   field: {
-    width: "400px",
+    width: '400px'
   },
   formControl: {
     margin: theme.spacing(1),
-    width: "400px",
+    width: '400px'
   },
   selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
+    marginTop: theme.spacing(2)
+  }
+}))
 
-export default function StuSi() {
-  const classes = useStyles();
+export default function StuSi () {
+  const [name, setName] = useState('')
+  const [mail, setMail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [pwd, setPwd] = useState('')
+
+  const classes = useStyles()
+
+  function handleClick () {
+    data.email = mail
+    data.studentName = name
+    data.mobileNumber = phone
+    data.password = pwd
+
+    const proxyUrl = 'http://localhost:8080/'
+    const urlsign = 'http://localhost:4500/students/signup'
+    axios.post(proxyUrl + urlsign, data).then(res => {
+      console.log(res)
+      alert('Now Login to your account')
+    })
+  }
+
   return (
-    <div className="StuSignin">
-      <div className="StuSiHeading">StudentSignIn</div>
-      <div className="BoxAdmin">
+    <div className='StuSignin'>
+      <div className='StuSiHeading'>StudentSignIn</div>
+      <div className='BoxAdmin'>
         <div>
-          <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+          <FormControl variant='outlined' className={classes.formControl}>
+            <InputLabel id='demo-simple-select-outlined-label'>Name</InputLabel>
             <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              label="Age"
+              labelId='demo-simple-select-outlined-label'
+              id='demo-simple-select-outlined'
+              onChange={e => {
+                setName(e.target.value)
+              }}
+              label='Name'
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {names.map(item => {
+                return <MenuItem value={item}>{item}</MenuItem>
+              })}
             </Select>
           </FormControl>
         </div>
       </div>
-      <div className="BoxAdmin">
+      <div className='BoxAdmin'>
         <TextField
-          id="outlined-basic"
-          label="Email"
+          id='outlined-basic'
+          label='Email'
           className={classes.field}
-          variant="outlined"
+          variant='outlined'
+          onChange={e => {
+            setMail(e.target.value)
+          }}
         />
       </div>
-      <div className="BoxAdmin">
+      <div className='BoxAdmin'>
         <TextField
-          id="outlined-basic"
-          label="Phone"
+          id='outlined-basic'
+          label='Phone'
           className={classes.field}
-          variant="outlined"
+          variant='outlined'
+          onChange={e => {
+            setPhone(e.target.value)
+          }}
         />
       </div>
-      <div className="BoxAdmin">
+      <div className='BoxAdmin'>
         <TextField
-          id="outlined-basic"
-          label="Password"
+          id='outlined-basic'
+          label='Password'
           className={classes.field}
-          variant="outlined"
+          variant='outlined'
+          type='password'
+          onChange={e => {
+            setPwd(e.target.value)
+          }}
         />
       </div>
-      <div className="SignUpStu">
-        <button className="btnlogin">COnnect_antenna</button>
+      <div className='SignUpStu'>
+        <button className='btnlogin' onClick={handleClick}>
+          COnnect_antenna
+        </button>
       </div>
     </div>
-  );
+  )
 }

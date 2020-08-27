@@ -6,7 +6,7 @@ import AuthPage from './Components/AuthPage';
 
 function App() {
   return (
-    <AdminHub />
+    <AuthPage />
   );
 }
 
