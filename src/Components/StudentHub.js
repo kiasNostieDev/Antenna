@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import SettingsInputAntenna from "@material-ui/icons/SettingsInputAntenna";
 import "./Styles/StudentHub.css";
-import { storage, fb } from "../FIrebase/firebase";
+import { fb } from "../FIrebase/firebase";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,14 +44,12 @@ const useStyles = makeStyles((theme) => ({
 export default function StudentHub() {
 
   const [file, setFile] = useState()
-  const [progress, setProgress] = useState(0)
   const el = useRef()
   const allInputs = {imgURL: ''}
   const [fileurl, setFileURL] = useState(allInputs)
 
   const classes = useStyles();
   function AppBarCustom() {
-    const classes = useStyles();
 
     return (
       <div className={classes.root}>
@@ -91,7 +89,6 @@ export default function StudentHub() {
   }
 
   function handleChange(event){
-    setProgress(0)
     const imageFile = event.target.files[0]
     console.log(imageFile)
     setFile(imagefile => (imageFile))

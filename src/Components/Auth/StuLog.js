@@ -1,50 +1,80 @@
-import React, { useState } from "react";
-import "../Styles/StuLog.css";
-import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState } from 'react'
+import '../Styles/StuLog.css'
+import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
+import axios from 'axios'
+import { useHistory, Link } from 'react-router-dom'
 
-const useStyles = makeStyles((theme) => ({
+
+const data = {
+  mobileNumber: '',
+  password: ''
+}
+
+const useStyles = makeStyles(theme => ({
   field: {
-    width: "400px",
-  },
-}));
+    width: '400px'
+  }
+}))
 
-export default function StuLog() {
+export default function StuLog () {
+  var history = useHistory()
   const [phone, setPhone] = useState('')
   const [pwd, setPwd] = useState('')
+  const [alerText, setAlertText] = useState('Student Login')
+  const [inidiColor, setIndiColor] = useState('#000')
   const classes = useStyles()
 
-  function handleClick(){}
+  function handleClick () {
+    data.mobileNumber = phone
+    data.password = pwd
+
+    const proxyUrl = 'http://localhost:8080/'
+    const urlsign = 'http://localhost:4500/students/login'
+    axios.post(proxyUrl + urlsign, data).then(res => {
+      if (res.data.antenna) {
+        setIndiColor('#ED6A5A')
+        setAlertText('Wrong Credentials')
+      }
+      console.log(res.data)
+      localStorage.setItem('AntennaWaveForm', res.data)
+      history.push('/student')
+    })
+  }
 
   return (
-    <div className="StuLogAuth">
-      <div className="StuLogHeading">Student Login</div>
-      <div className="BoxAdmin">
+    <div className='StuLogAuth'>
+      <div className='StuLogHeading' style={{ color: inidiColor }}>
+        {alerText}
+      </div>
+      <div className='BoxAdmin'>
         <TextField
-          id="outlined-basic"
-          label="Phone"
+          id='phone'
+          label='Phone'
           className={classes.field}
-          variant="outlined"
+          variant='outlined'
           onChange={e => {
             setPhone(e.target.value)
           }}
         />
       </div>
-      <div className="BoxAdmin">
+      <div className='BoxAdmin'>
         <TextField
-          id="outlined-basic"
-          label="Password"
+          id='pwd'
+          label='Password'
           className={classes.field}
-          variant="outlined"
+          variant='outlined'
           type='password'
           onChange={e => {
             setPwd(e.target.value)
           }}
         />
       </div>
-      <div className="StuLogin">
-          <button className="btnlogin" onClick={handleClick}>COnnect_antenna</button>
+      <div className='StuLogin'>
+        <button className='btnlogin' onClick={handleClick}>
+          COnnect_antenna
+        </button>
       </div>
     </div>
-  );
+  )
 }
