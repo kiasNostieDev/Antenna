@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import { useHistory, Link } from 'react-router-dom'
+import { currentLogin } from '../../Data/loginData'
 
 
 const data = {
@@ -30,15 +31,19 @@ export default function StuLog () {
     data.password = pwd
 
     const proxyUrl = 'http://localhost:8080/'
-    const urlsign = 'http://localhost:4500/students/login'
+    const urlsign = 'http://localhost:6969/students/login'
     axios.post(proxyUrl + urlsign, data).then(res => {
       if (res.data.antenna) {
         setIndiColor('#ED6A5A')
         setAlertText('Wrong Credentials')
+      }else{
+        console.log(res.data)
+        localStorage.setItem('AntennaWaveForm', res.data)
+        currentLogin.name = data.name
+        currentLogin.phone = data.mobileNumber
+        currentLogin.jwt = res.data
+        history.push('/student')
       }
-      console.log(res.data)
-      localStorage.setItem('AntennaWaveForm', res.data)
-      history.push('/student')
     })
   }
 

@@ -1,142 +1,209 @@
-.CurrentCaseStudy{
-    margin-top: 3%;
-    height: fit-content;
-    width: 60%;
-    margin-left: 20%;
-    padding: 5px;
+.CurrentCaseStudy {
+  margin-top: 3%;
+  height: fit-content;
+  width: 60%;
+  margin-left: 20%;
+  padding: 5px;
 }
 
-.HeadingCase{
+.HeadingCase {
+  font-family: 'Geo';
+  font-size: 20pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #5d576b;
+  margin: 40px 0 50px 0;
+}
+
+.StudyName {
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18pt;
+  font-family: 'Mulish', sans-serif;
+  text-align: center;
+}
+
+.StudyName:hover {
+  text-decoration: underline;
+  text-decoration-color: gray;
+}
+
+.HelloStudent {
+  display: flex;
+  margin: 40px 0 50px 0;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-family: 'Mulish';
+  font-size: 25pt;
+}
+
+.UploadButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.UploadedFileName {
+  width: fit-content;
+  height: fit-content;
+  background-color: white;
+  float: left;
+  text-align: center;
+  margin-top: px;
+  font-family: 'Mulish';
+  font-size: 14pt;
+}
+
+.Uploadbtn {
+  border: none;
+  float: left;
+  padding: 10px;
+  margin-left: 30px;
+  font-family: 'Geo';
+  font-size: large;
+  color: #5d576b;
+  font-size: 20pt;
+}
+
+.Uploadbtn:hover {
+  background-color: #ed6a5a;
+  letter-spacing: 1px;
+  border-radius: 3px;
+}
+
+.Submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.SubmitButton {
+  border: none;
+  padding: 5px 8px 5px 8px;
+  background-color: #ed6a5a;
+  border-radius: 3px;
+  font-size: 13pt;
+  font-family: 'Mulish';
+  color: white;
+  flex: 2;
+}
+
+.SubmitButton:hover {
+  background-color: #5d576b;
+  letter-spacing: 1px;
+}
+
+.nthCaseStudyTile {
+  margin: 10px 10% 20px 10%;
+  width: 76%;
+  height: 50px;
+  background-color: #e6ebe0;
+  padding: 10px 2% 10px 2%;
+  display: flex;
+  align-items: center;
+}
+
+.CaseStudyTitle {
+  flex: 5;
+  width: 30%;
+}
+
+.CaseStudyText {
+  font-family: 'Mulish';
+  font-size: 13pt;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.CaseStudyDownload {
+  flex: 2;
+}
+
+.CaseStudyUpload {
+  flex: 2;
+  margin: 0 10px 0 0px;
+  align-content: center;
+}
+
+.file-input-wrapper {
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
+  position: relative;
+  padding: 5px 15px 5px 15px;
+}
+.file-input-wrapper > input[type='file'] {
+  font-size: 200px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+}
+.file-input-wrapper > .btn-file-input {
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 15px 5px 15px;
+}
+
+.btn-file-input{
+    background-color: #5d576b;
+    border: none;
+    color: #ffffff;
+    font-size: 13pt;
+    font-family: 'Mulish';
+    border-radius: 3px;
+}
+
+file-input-wrapper > .btn-file-input:hover{
+    letter-spacing: 1px;
+    background-color: #ed6b5abb;
+}
+
+@media only screen and (max-width: 900px) {
+  .CurrentCaseStudy {
+    margin-top: 3%;
+    height: fit-content;
+    width: 80%;
+    margin-left: 10%;
+    padding: 5px;
+  }
+
+  .HeadingCase {
     font-family: 'Geo';
-    font-size: 20pt;
+    font-size: 16pt;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #5D576B;
-}
+    color: #5d576b;
+  }
 
-.StudyName{
+  .StudyName {
     padding-top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18pt;
-    font-family: 'Mulish',sans-serif;
+    font-size: 14pt;
+    font-family: 'Mulish', sans-serif;
     text-align: center;
-}
+  }
 
-.StudyName:hover{
-    text-decoration: underline;
-    text-decoration-color: gray;
-}
-
-.HelloStudent{
+  .HelloStudent {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 40px;
     padding: 10px;
     font-family: 'Mulish';
-    font-size: 25pt;
-}
-
-.UploadButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.UploadedFileName{
-    width: fit-content;
-    height: fit-content;
-    background-color: white;
-    float: left;
-    text-align: center;
-    margin-top: px;
-    font-family: 'Mulish';
-    font-size: 14pt;
-}
-
-.Uploadbtn{
-    border: none;
-    float: left;
-    padding: 10px;
-    margin-left: 30px;
-    font-family: 'Geo';
-    font-size: large;
-    color: #5D576B;
     font-size: 20pt;
-}
-
-.Uploadbtn:hover{
-    background-color: #ED6A5A;
-    letter-spacing: 1px;
-    border-radius: 3px;
-}
-
-.Submit{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 25px;
-}
-
-.SubmitButton{
-    border: none;
-    padding: 5px 8px 5px 8px;
-    background-color: #ED6A5A;
-    border-radius: 3px;
-    font-size: 18pt;
-    font-family: 'Mulish';
-    color: white;
-}
-
-.SubmitButton:hover{
-    background-color: #5D576B;
-    letter-spacing: 1px;
-
-}
-
-
-
-@media only screen and (max-width: 900px) {
-    .CurrentCaseStudy{
-        margin-top: 3%;
-        height: fit-content;
-        width: 80%;
-        margin-left: 10%;
-        padding: 5px;
-    }
-
-    .HeadingCase{
-        font-family: 'Geo';
-        font-size: 16pt;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #5D576B;
-    }
-    
-    .StudyName{
-        padding-top: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 14pt;
-        font-family: 'Mulish',sans-serif;
-        text-align: center;
-    }
-
-    .HelloStudent{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 40px;
-        padding: 10px;
-        font-family: 'Mulish';
-        font-size: 20pt;
-    }
+  }
 }

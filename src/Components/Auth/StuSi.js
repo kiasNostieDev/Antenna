@@ -44,7 +44,7 @@ export default function StuSi () {
     data.password = pwd
 
     const proxyUrl = 'http://localhost:8080/'
-    const urlsign = 'http://localhost:4500/students/signup'
+    const urlsign = 'http://an73nna.herokuapp.com/students/signup'
     axios.post(proxyUrl + urlsign, data).then(res => {
       console.log(res)
       alert('Now Login to your account')

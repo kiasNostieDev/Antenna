@@ -2,214 +2,377 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap');
 
 .CurrentCaseStudy {
-    margin-top: 3%;
-    height: fit-content;
-    width: 60%;
-    margin-left: 20%;
-    padding: 5px;
+  margin-top: 3%;
+  height: fit-content;
+  width: 60%;
+  margin-left: 20%;
+  padding: 5px;
 }
 
 .NoCaseStudy {
-    margin-top: 3%;
-    height: fit-content;
-    width: 60%;
-    margin-left: 20%;
-    padding: 5px;
+  margin-top: 3%;
+  height: fit-content;
+  width: 60%;
+  margin-left: 20%;
+  padding: 5px;
 }
 
 .UploadFile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    width: 100%;
-    margin-top: 10px;
-    transition: ease-in-out 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  margin-top: 10px;
+  transition: ease-in-out 0.2s;
 }
 
 .UploadFilebtn {
-    border: none;
-    border-radius: 3px;
-    background-color: #5D576B;
-    color: white;
-    font-size: 16pt;
-    font-family: 'Mulish';
-    text-transform: uppercase;
-    padding: 7px;
-    margin-left: 20px;
-    transition: ease-in-out 0.2s;
+  border: none;
+  border-radius: 3px;
+  background-color: #5d576b;
+  color: white;
+  font-size: 16pt;
+  font-family: 'Mulish';
+  text-transform: uppercase;
+  padding: 7px;
+  margin-left: 20px;
+  transition: ease-in-out 0.2s;
 }
 
 .UploadFilebtn:hover {
-    letter-spacing: 1px;
-    color: black;
-    background-color: #ED6A5A;
+  letter-spacing: 1px;
+  color: black;
+  background-color: #ed6a5a;
 }
 
 .SubmitButtonFile {
-    border: none;
-    border-radius: 3px;
-    background-color: #ED6A5A;
-    color: white;
-    font-size: 16pt;
-    font-family: 'Mulish';
-    text-transform: uppercase;
-    padding: 7px;
-    margin-top: 8px;
-    float: left;
-    margin-left: 40px;
-    transition: ease-in-out 0.2s;
+  border: none;
+  border-radius: 3px;
+  background-color: #ed6a5a;
+  color: white;
+  font-size: 16pt;
+  font-family: 'Mulish';
+  text-transform: uppercase;
+  padding: 7px;
+  margin-top: 8px;
+  float: left;
+  margin-left: 40px;
+  transition: ease-in-out 0.2s;
 }
 
 .SubmitButtonFile:hover {
-    background-color: #5D576B;
-    letter-spacing: 1px;
-    color: black;
+  background-color: #5d576b;
+  letter-spacing: 1px;
+  color: black;
 }
 
 .HeadingCase {
-    font-family: 'Geo';
-    font-size: 20pt;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #5D576B;
+  font-family: 'Geo';
+  font-size: 20pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #5d576b;
+}
+
+.AddCaseStudyTile{
+  width: 90%;
+  margin: 30px 0 0 40px;
+  height: fit-content;
+  padding: 2%;
+}
+
+.SubmitCaseBtn {
+  border: none;
+  padding: 5px 8px 5px 8px;
+  background-color: #ed6a5a;
+  border-radius: 3px;
+  margin-top: 16px;
+  font-size: 13pt;
+  font-family: 'Mulish';
+  color: white;
 }
 
 .StudyName {
-    padding-top: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18pt;
-    font-family: 'Mulish', sans-serif;
-    text-align: center;
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18pt;
+  font-family: 'Mulish', sans-serif;
+  text-align: center;
 }
 
 .StudyName:hover {
-    text-decoration: underline;
-    text-decoration-color: gray;
+  text-decoration: underline;
+  text-decoration-color: gray;
 }
 
 .GiveCase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.GiveCaseButton {
+  padding: 8px;
+  font-family: 'Geo';
+  font-size: 17pt;
+  border: none;
+  background-color: #9bc1bc;
+  color: #5d576b;
+}
+
+.GiveCaseButton:hover {
+  color: black;
+}
+
+.StudentList {
+  margin-top: 4%;
+  padding: 2px;
+}
+
+.StudentTile {
+  padding: 20px 2% 0 2%;
+  height: fit-content;
+  background-color: #e6ebe0;
+  width: fit-content;
+  margin-top: 1px;
+}
+
+.Name {
+  font-family: 'Mulish';
+  color: black;
+  font-size: 18pt;
+  text-transform: uppercase;
+}
+
+.MainAdminScreen {
+  width: 100%;
+  height: 90.5vh;
+}
+
+.AddScreen {
+  width: 50%;
+  height: inherit;
+  float: left;
+}
+
+.file-input-wrapper {
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
+  position: relative;
+  padding: 5px 15px 5px 15px;
+  float: left;
+}
+
+.file-input-wrapper > input[type='file'] {
+  font-size: 200px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+}
+
+.file-input-wrapper > .btn-file-input {
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 15px 5px 15px;
+}
+
+.btn-file-input{
+    background-color: #5d576b;
+    border: none;
+    color: #ffffff;
+    font-size: 13pt;
+    font-family: 'Mulish';
+    border-radius: 3px;
+    float: left;
+    margin-top: 11px;
+    margin-left: 40px;
+}
+
+file-input-wrapper > .btn-file-input:hover{
+    letter-spacing: 1px;
+    background-color: #ed6b5abb;
+}
+
+::-webkit-scrollbar{
+  width: 5px;
+} 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ed6a5a; 
+}
+
+.ShowBefore{
+  width: 90%;
+  height: 54vh;
+  margin-left: 10%;
+  margin-top: 40px;
+  overflow: auto;
+}
+
+.AdminCaseTile{
+  width: 97%;
+  height: 45px;
+  padding: 1%;
+  background-color: #E6EBE0;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.TileTitle{
+  float: left;
+  font-family: 'Mulish';
+  font-size: 19pt;
+  margin-top: 6px;
+}
+
+.TileIcon{
+  align-content: flex-end;
+  float: right;
+}
+
+.HeadingMain {
+  font-family: 'Geo';
+  font-size: 20pt;
+  margin-top: 30px;
+  color: #5d576b;
+}
+
+.StudentsScreen {
+  width: 50%;
+  height: inherit;
+  float: left;
+}
+
+.ListofStuds {
+  width: 100%;
+  height: 70%;
+  overflow: auto;
+}
+
+.nthTile {
+  width: 90%;
+  height: fit-content;
+  padding: 7px;
+  margin: 0 5% 0 5%;
+  text-align: center;
+  border-radius: 2px;
+  font-size: 20pt;
+  font-family: 'Mulish';
+  color: #5d576b;
+  margin-top: 6px;
+}
+
+.nthTile:hover {
+  letter-spacing: 1px;
+  color: black;
+}
+
+.Studownload {
+  width: 100%;
+  height: fit-content;
+}
+
+.GetFileDesc {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Geo';
+  font-size: 17pt;
+}
+
+.GetFileBtn {
+  border: none;
+  padding: 10px;
+  letter-spacing: 2px;
+  font-family: 'Mulish';
+  background-color: #e6ebe0;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .Name {
+    font-size: 12pt;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 20px;
-}
+  }
 
-.GiveCaseButton {
-    padding: 8px;
-    font-family: 'Geo';
-    font-size: 17pt;
-    border: none;
-    background-color: #9BC1BC;
-    color: #5D576B;
-}
-
-.GiveCaseButton:hover {
-    color: black;
-}
-
-.StudentList {
-    margin-top: 4%;
-    padding: 2px;
-}
-
-.StudentTile {
-    padding: 20px 0 0 2%;
-    height: 50px;
-    background-color: #E6EBE0;
-    width: 98%;
+  .StudentTile {
+    padding: 0px 0 20px 5%;
+    height: 40px;
+    background-color: #e6ebe0;
+    width: 95%;
     margin-top: 1px;
-}
+  }
 
-.Name {
+  .File {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 27%;
+    margin-top: 11px;
+  }
+
+  .SubmitButtonFile {
+    border: none;
+    border-radius: 3px;
+    background-color: #ed6a5a;
+    color: white;
+    font-size: 10pt;
     font-family: 'Mulish';
-    color: black;
-    font-size: 18pt;
-    float: left;
     text-transform: uppercase;
-}
+    padding: 7px;
+    margin-top: 8px;
+    transition: ease-in-out 0.2s;
+  }
 
-.File {
-    float: left;
-    margin-left: 74%;
-}
+  .UploadFile {
+    margin-top: 10px;
+    transition: ease-in-out 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-@media only screen and (max-width: 900px) {
-    .Name {
-        font-size: 12pt;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 20px;
-    }
+  .UploadFilebtn {
+    border: none;
+    border-radius: 3px;
+    background-color: #5d576b;
+    color: white;
+    font-size: 10pt;
+    font-family: 'Mulish';
+    text-transform: uppercase;
+    padding: 7px;
+    transition: ease-in-out 0.2s;
+    transition: ease-in-out 0.2s;
+  }
 
-    .StudentTile {
-        padding: 0px 0 20px 5%;
-        height: 40px;
-        background-color: #E6EBE0;
-        width: 95%;
-        margin-top: 1px;
-    }
+  .CurrentCaseStudy {
+    margin-top: 3%;
+    height: fit-content;
+    width: 80%;
+    margin-left: 10%;
+    padding: 5px;
+  }
 
-    .File {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 27%;
-        margin-top: 11px;
-    }
-
-    .SubmitButtonFile {
-        border: none;
-        border-radius: 3px;
-        background-color: #ED6A5A;
-        color: white;
-        font-size: 10pt;
-        font-family: 'Mulish';
-        text-transform: uppercase;
-        padding: 7px;
-        margin-top: 8px;
-        transition: ease-in-out 0.2s;
-    }
-
-    .UploadFile {
-        margin-top: 10px;
-        transition: ease-in-out 0.2s;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .UploadFilebtn {
-        border: none;
-        border-radius: 3px;
-        background-color: #5D576B;
-        color: white;
-        font-size: 10pt;
-        font-family: 'Mulish';
-        text-transform: uppercase;
-        padding: 7px;
-        transition: ease-in-out 0.2s;
-        transition: ease-in-out 0.2s;
-    }
-
-    .CurrentCaseStudy {
-        margin-top: 3%;
-        height: fit-content;
-        width: 80%;
-        margin-left: 10%;
-        padding: 5px;
-    }
-    
-    .NoCaseStudy {
-        margin-top: 3%;
-        height: fit-content;
-        width: 80%;
-        margin-left: 10%;
-        padding: 5px;
-    }
-    
+  .NoCaseStudy {
+    margin-top: 3%;
+    height: fit-content;
+    width: 80%;
+    margin-left: 10%;
+    padding: 5px;
+  }
 }
