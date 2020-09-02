@@ -4,3 +4,8 @@ export const currentLogin = {
     phone: '',
     jwt: ''
 }
+
+export const currentAdmin = {
+    jwt: '',
+    mail: ''
+}

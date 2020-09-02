@@ -12,7 +12,7 @@ ReactDOM.render(
   <Router>
     <div>
       <Switch>
-        <Route exact path='/' component={AdminHub} />
+        <Route exact path='/' component={App} />
         <Route path='/student/' component={StudentHub} />
         <Route path='/root' component={AdminHub} />
       </Switch>

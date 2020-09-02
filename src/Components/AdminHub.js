@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import './Styles/AdminHub.css'
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -11,6 +11,8 @@ import Delete from '@material-ui/icons/Delete'
 import TextField from '@material-ui/core/TextField'
 import { fb } from '../FIrebase/firebase'
 import { names } from '../data'
+import { currentAdmin } from '../Data/loginData'
+import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,16 +41,22 @@ const useStyles = makeStyles(theme => ({
 
 export default function AdminHub () {
   const [file, setFile] = useState()
-  const [progress, setProgress] = useState(0)
   const el = useRef()
   const allInputs = { imgURL: '' }
+
   const [fileurl, setFileURL] = useState(allInputs)
   const [getFile, setGetFile] = useState('')
+  const [caseName, setCaseName] = useState()
+
+  const data = {
+    caseStudeTitle: '',
+    fileLink: '',
+    dueDate: ''
+  }
 
   const classes = useStyles()
 
   function handleChange (event) {
-    setProgress(0)
     const imageFile = event.target.files[0]
     console.log(imageFile)
     setFile(imagefile => imageFile)
@@ -62,7 +70,15 @@ export default function AdminHub () {
       snapshot => {
         imageUpload.getDownloadURL().then(url => {
           setFileURL(url)
-          console.log(url)
+          data.fileLink =fileurl
+          data.dueDate = ''
+          data.caseStudeTitle ='testing'
+
+          const proxyUrl = 'http://localhost:8080/'
+          const urlsign = 'http://localhost:4500/cases'
+          axios.post(proxyUrl + urlsign, data).then(res => {
+            console.log(res)
+          })
         })
       },
       err => {
@@ -146,26 +162,20 @@ export default function AdminHub () {
           </div>
           <div className='AddCaseStudyTile'>
             <TextField
+              id='outlined-basic'
+              label='CaseStudy Title'
               className={classes.field}
-              id='standard-textarea'
-              label='Title or Description'
-              placeholder='CaseStudy'
+              ref={el}
             />
             <div className='file-input-wrapper'>
               <button className='btn-file-input'>Upload File</button>
-              <input type='file' name='file' />
+              <input type='file' name='file' onChange={handleChange} />
             </div>
-            <button className='SubmitCaseBtn'>Upload CaseStudy</button>
+            <button className='SubmitCaseBtn' onClick={handleUpload}>
+              Upload CaseStudy
+            </button>
           </div>
-          <div className='ShowBefore'>
-            <AdminCaseTile />
-            <AdminCaseTile />
-            <AdminCaseTile />
-            <AdminCaseTile />
-            <AdminCaseTile />
-            <AdminCaseTile />
-            <AdminCaseTile />
-          </div>
+          <div className='ShowBefore'></div>
         </div>
         <div className='StudentsScreen'>
           <div className='ListofStuds'>

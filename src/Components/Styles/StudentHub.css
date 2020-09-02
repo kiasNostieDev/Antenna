@@ -130,28 +130,14 @@
 
 .CaseStudyUpload {
   flex: 2;
-  margin: 0 10px 0 0px;
-  align-content: center;
+  margin-bottom: 11px;
 }
 
 .file-input-wrapper {
-  width: fit-content;
-  height: fit-content;
   overflow: hidden;
-  position: relative;
-  padding: 5px 15px 5px 15px;
 }
-.file-input-wrapper > input[type='file'] {
-  font-size: 200px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  opacity: 0;
-}
+
 .file-input-wrapper > .btn-file-input {
-  display: inline-block;
-  width: fit-content;
-  height: fit-content;
   padding: 5px 15px 5px 15px;
 }
 

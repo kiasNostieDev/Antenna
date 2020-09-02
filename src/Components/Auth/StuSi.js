@@ -13,7 +13,8 @@ const data = {
   studentName: '',
   mobileNumber: '',
   email: '',
-  password: ''
+  password: '',
+  rollNo: ''
 }
 
 const useStyles = makeStyles(theme => ({
@@ -42,6 +43,7 @@ export default function StuSi () {
     data.studentName = name
     data.mobileNumber = phone
     data.password = pwd
+    data.rollNo = names.indexOf(name+1)
 
     const proxyUrl = 'http://localhost:8080/'
     const urlsign = 'http://an73nna.herokuapp.com/students/signup'

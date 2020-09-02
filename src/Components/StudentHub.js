@@ -114,7 +114,7 @@ export default function StudentHub (props) {
         </div>
         <div className='CaseStudyUpload'>
           <div className='file-input-wrapper'>
-            <button className='btn-file-input'>Upload File</button>
+            <button className='btn-file-input'>UploadFile</button>
             <input type='file' name='file' />
           </div>
         </div>
