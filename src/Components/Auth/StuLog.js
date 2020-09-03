@@ -31,17 +31,19 @@ export default function StuLog () {
     data.password = pwd
 
     const proxyUrl = 'http://localhost:8080/'
-    const urlsign = 'http://localhost:4500/students/login'
+    const urlsign = 'http://localhost:6969/students/login'
     axios.post(proxyUrl + urlsign, data).then(res => {
       if (res.data.antenna) {
         setIndiColor('#ED6A5A')
         setAlertText('Wrong Credentials')
       }else{
         localStorage.setItem('AntennaWaveForm', res.data)
+        console.log(res.data)
         currentLogin.name = res.data.studentName
         currentLogin.mail = res.data.email
         currentLogin.phone = data.mobileNumber
         currentLogin.jwt = res.headers['auth-token']
+        currentLogin.rollNo = res.data.rollNo
         history.push('/student')
       }
     })

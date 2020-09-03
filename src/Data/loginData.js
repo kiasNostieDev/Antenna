@@ -2,7 +2,8 @@ export const currentLogin = {
     name: '',
     mail: '',
     phone: '',
-    jwt: ''
+    jwt: '',
+    rollNo: ''
 }
 
 export const currentAdmin = {

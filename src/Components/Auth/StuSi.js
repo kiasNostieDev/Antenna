@@ -43,10 +43,10 @@ export default function StuSi () {
     data.studentName = name
     data.mobileNumber = phone
     data.password = pwd
-    data.rollNo = names.indexOf(name+1)
+    data.rollNo = names.indexOf(name)+1
 
     const proxyUrl = 'http://localhost:8080/'
-    const urlsign = 'http://an73nna.herokuapp.com/students/signup'
+    const urlsign = 'http://localhost:6969/students/signup'
     axios.post(proxyUrl + urlsign, data).then(res => {
       console.log(res)
       alert('Now Login to your account')
@@ -65,6 +65,7 @@ export default function StuSi () {
               id='demo-simple-select-outlined'
               onChange={e => {
                 setName(e.target.value)
+                names.indexOf(e.target.value,e.target.value)
               }}
               label='Name'
             >

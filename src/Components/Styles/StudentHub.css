@@ -192,4 +192,39 @@ file-input-wrapper > .btn-file-input:hover{
     font-family: 'Mulish';
     font-size: 20pt;
   }
+
+  .nthCaseStudyTile{
+    /* margin: 10px 10% 20px 10%; */
+    width: 100%;
+    height: fit-content;
+    background-color: #e6ebe0;
+    padding: 10px 2% 10px 2%;
+    align-items: unset;
+    display: unset;
+  }
+
+  .CaseStudyTitle {
+    flex: unset;
+    width: 100%;
+    height: fit-content;
+  }
+  
+  .CaseStudyText {
+    font-family: 'Mulish';
+    font-size: 13pt;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .CaseStudyDownload {
+    flex: unset;
+    width: 100%;
+  }
+  
+  .CaseStudyUpload {
+    flex: unset;
+    width: 100%;
+    margin-bottom: 11px;
+  }
 }

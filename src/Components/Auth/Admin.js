@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import { currentAdmin } from '../../Data/loginData'
 import { useHistory, Link } from 'react-router-dom'
+import { caseStudies } from '../../Data/caseStudyData'
 
 const useStyles = makeStyles(theme => ({
   field: {

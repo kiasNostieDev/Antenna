@@ -83,6 +83,15 @@
   padding: 2%;
 }
 
+.AddCaseStudyTile input{
+  margin-top: 10px;
+  border-bottom-width: 2px;
+  border-width: 0 0 3px 0;
+  border-color: #ed6a5a;
+  padding: 5px;
+  font-size: 15pt;
+}
+
 .SubmitCaseBtn {
   border: none;
   padding: 5px 8px 5px 8px;

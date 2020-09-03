@@ -13,6 +13,8 @@ import { fb } from '../FIrebase/firebase'
 import { names } from '../data'
 import { currentAdmin } from '../Data/loginData'
 import axios from 'axios'
+import Admin from './Auth/Admin'
+import { caseStudies } from '../Data/caseStudyData'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,43 +43,52 @@ const useStyles = makeStyles(theme => ({
 
 export default function AdminHub () {
   const [file, setFile] = useState()
+  const [caseArray, setCaseArray] = useState([])
   const el = useRef()
   const allInputs = { imgURL: '' }
+  const fileRef = useRef()
 
-  const [fileurl, setFileURL] = useState(allInputs)
+  const [fileName, setFileName] = useState('')
   const [getFile, setGetFile] = useState('')
   const [caseName, setCaseName] = useState()
+  var cases = caseArray
 
   const data = {
-    caseStudeTitle: '',
+    caseStudetitle: '',
     fileLink: '',
-    dueDate: ''
   }
+  const proxyUrl = 'http://localhost:8080/'
+  const urlsign = 'http://localhost:6969/cases'
 
   const classes = useStyles()
 
   function handleChange (event) {
+    setFileName(el.current.value)
     const imageFile = event.target.files[0]
     console.log(imageFile)
-    setFile(imagefile => imageFile)
-    console.log(file)
+    setFile(imageFile)
+    // console.log(fileRef.current.files[0].name)
   }
 
   function handleUpload () {
     const storage = fb.storage().ref('docs/admin')
-    const imageUpload = storage.child(file.name)
+    const imageUpload = storage.child(fileName)
     imageUpload.put(file).then(
       snapshot => {
         imageUpload.getDownloadURL().then(url => {
-          setFileURL(url)
-          data.fileLink =fileurl
-          data.dueDate = ''
-          data.caseStudeTitle ='testing'
+          data.fileLink = url
+          console.log(data.fileLink)
+          data.caseStudytitle = fileName
 
           const proxyUrl = 'http://localhost:8080/'
-          const urlsign = 'http://localhost:4500/cases'
+          const urlsign = 'http://localhost:6969/cases'
           axios.post(proxyUrl + urlsign, data).then(res => {
             console.log(res)
+            alert('Uploaded the CaseStudy Meta!')
+            axios.get(proxyUrl+urlsign).then(res=>{
+              setCaseArray(res.data)
+              console.log(caseStudies)
+            })
           })
         })
       },
@@ -129,10 +140,11 @@ export default function AdminHub () {
     )
   }
 
-  function AdminCaseTile () {
+  function AdminCaseTile (props) {
+    const link = props.link
     return (
       <div className='AdminCaseTile'>
-        <div className='TileTitle'>C Lab Programs</div>
+        <div className='TileTitle'>{props.caseName}</div>
         <div className='TileIcon'>
           <IconButton
             edge='start'
@@ -161,21 +173,27 @@ export default function AdminHub () {
             <div className='HeadingMain'>Case_Studies</div>
           </div>
           <div className='AddCaseStudyTile'>
-            <TextField
-              id='outlined-basic'
-              label='CaseStudy Title'
-              className={classes.field}
-              ref={el}
-            />
+            <input placeholder='CaseStudyTitle' type='text' id='outlined-basic' className={classes.field} ref={el} />
             <div className='file-input-wrapper'>
               <button className='btn-file-input'>Upload File</button>
-              <input type='file' name='file' onChange={handleChange} />
+              <input
+                type='file'
+                name='file'
+                ref={fileRef}
+                onChange={handleChange}
+              />
             </div>
             <button className='SubmitCaseBtn' onClick={handleUpload}>
               Upload CaseStudy
             </button>
           </div>
-          <div className='ShowBefore'></div>
+          <div className='ShowBefore'>
+            {
+            cases.map(item=>{
+              return <AdminCaseTile id={item.caseStudetitle} caseName={item['caseStudytitle']} link={item['fileLink']}/>
+            })
+          }
+          </div>
         </div>
         <div className='StudentsScreen'>
           <div className='ListofStuds'>

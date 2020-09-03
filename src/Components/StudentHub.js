@@ -47,11 +47,28 @@ export default function StudentHub (props) {
   const [file, setFile] = useState()
   const allInputs = { imgURL: '' }
   const [fileurl, setFileURL] = useState(allInputs)
+  const [isLoading, setIsLoading] = useState('1')
+  const [cases, setCases] = useState([])
+  const el = useRef()
+  const fileRef = useRef()
+  const [getFile, setGetFile] = useState('')
+
   const data = {
     studentName: '',
     caseStudy: '',
+    rollNo: '',
     straightness: '',
-    filelink: ''
+    fileLink: ''
+  }
+  const proxyUrl = 'http://localhost:8080/'
+  const urlcase = 'http://localhost:6969/cases'
+
+  if (isLoading === '1') {
+    axios.get(proxyUrl + urlcase).then(res => {
+      const Cases = res.data
+      setCases(Cases)
+      setIsLoading('0')
+    })
   }
 
   console.log(currentLogin)
@@ -92,8 +109,8 @@ export default function StudentHub (props) {
     )
   }
 
-  function HelloStudent () {
-    return <div className='HelloStudent'>Hello Akinthiya Srinath KI,</div>
+  function HelloStudent (props) {
+    return <div className='HelloStudent'>Hello {props.name},</div>
   }
 
   function handleChange (event) {
@@ -103,44 +120,64 @@ export default function StudentHub (props) {
     console.log(file)
   }
 
-  function Tile () {
+  function Tile (props) {
+    const link = props.link
     return (
       <div className='nthCaseStudyTile'>
         <div className='CaseStudyTitle'>
-          <div className='CaseStudyText'></div>
+          <div className='CaseStudyText'>{props.name}</div>
         </div>
         <div className='CaseStudyDownload'>
-          <button className='SubmitButton'>DownloadFile</button>
+          <button
+            className='SubmitButton'
+            onClick={() => {
+              window.open(link)
+            }}
+          >
+            DownloadFile
+          </button>
         </div>
         <div className='CaseStudyUpload'>
           <div className='file-input-wrapper'>
             <button className='btn-file-input'>UploadFile</button>
-            <input type='file' name='file' />
+            <input type='file' name='file' ref={el} onChange={handleChange}/>
           </div>
         </div>
-        <button className='SubmitButton' onClick={handleUpload}>
+        <button
+          className='SubmitButton'
+          onClick={() => {
+            props.click(props.name)
+          }}
+        >
           UploadSolution
         </button>
       </div>
     )
   }
 
-  function handleUpload () {
+  function handleUpload (caseTitle) {
     const fbstorage = fb.storage().ref('/docs/solutions')
-    const imageUpload = fbstorage.child(file.name)
+    const imageUpload = fbstorage.child(currentLogin.name + caseTitle)
     const proxyUrl = 'http://localhost:8080/'
-    const urlsign = 'http://localhost:6969/students/login'
+    const urlsign = 'https://an73nna.herokuapp.com/hw'
 
     imageUpload.put(file).then(
       snapshot => {
         imageUpload.getDownloadURL().then(url => {
           setFileURL(url)
-          // data.filelink = fileurl
-          // data.name = this.props.location.state.name
+          console.log(url)
+          data.fileLink = url
+          data.straightness = '1'
+          data.caseStudy = caseTitle
+          data.studentName = currentLogin.name
+          data.rollNo = currentLogin.rollNo
           console.log(data.name)
-          axios.post(proxyUrl + urlsign, data).then(res => {
-            console.log(res)
-          })
+          axios.post(proxyUrl + urlsign, {"body":data},{headers:{
+            "auth-token":currentLogin.jwt
+          }})
+            .then(res => {
+              console.log(res)
+            })
         })
       },
       err => {
@@ -149,14 +186,34 @@ export default function StudentHub (props) {
     )
   }
 
+  function Decider () {
+    if (isLoading === '1') {
+      return <>Loading...</>
+    }
+    return (
+      <div>
+        <AppBarCustom />
+        <HelloStudent name={currentLogin.name} />
+        <div className='HeadingCase'>Current_Case_Studies</div>
+        <div>
+          {cases.map(item => {
+            console.log(item['caseStudytitle'])
+            return (
+              <Tile
+                name={item['caseStudytitle']}
+                click={handleUpload}
+                link={item['fileLink']}
+              />
+            )
+          })}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div>
-      <AppBarCustom />
-      <HelloStudent />
-      <div className='HeadingCase'>Current_Case_Studies</div>
-      <Tile />
-      <Tile />
-      <Tile />
+      <Decider />
     </div>
   )
 }
