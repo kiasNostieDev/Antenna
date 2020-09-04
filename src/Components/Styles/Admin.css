@@ -1,46 +1,65 @@
 .AdminAuth {
-    width: 100%;
+  width: 100%;
 }
 
 .AdminHeading {
-    margin-top: 200px;
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30pt;
+  font-family: 'Geo';
+}
+
+.BoxAdmin {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.LoginAdmin {
+  margin-top: 40px;
+  width: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnlogin {
+  border: none;
+  border-radius: 5px;
+  background-color: #5d576b;
+  font-family: 'Mulish';
+  font-size: 18pt;
+  padding: 10px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.btnlogin:hover {
+  background-color: #9bc1bc;
+  letter-spacing: 1px;
+  transition: ease-in-out 0.1s;
+  color: black;
+}
+
+@media only screen and (max-width: 900px) {
+  .AdminHeading {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 30pt;
     font-family: 'Geo';
-}
+  }
 
-.BoxAdmin {
+  .BoxAdmin {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-}
-
-.LoginAdmin {
-    margin-top: 40px;
-    width: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btnlogin {
-    border: none;
-    border-radius: 5px;
-    background-color: #5D576B;
-    font-family: 'Mulish';
-    font-size: 18pt;
-    padding: 10px;
-    text-transform: uppercase;
-    color: white;
-}
-
-.btnlogin:hover{
-    background-color: #9BC1BC;
-    letter-spacing: 1px;
-    transition: ease-in-out 0.1s;
-    color: black;
+    margin-top: unset;
+  }
 }

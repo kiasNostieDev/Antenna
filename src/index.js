@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import App from './App'
 import StudentHub from './Components/StudentHub'
 import AdminHub from './Components/AdminHub'
-import Admin from './Components/Auth/Admin'
 
 
 ReactDOM.render(

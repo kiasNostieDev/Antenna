@@ -3,7 +3,7 @@ import '../Styles/StuLog.css'
 import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { currentLogin } from '../../Data/loginData'
 import { names } from '../../data'
 
@@ -15,7 +15,10 @@ const data = {
 
 const useStyles = makeStyles(theme => ({
   field: {
-    width: '400px'
+    width: '300px',
+    [theme.breakpoints.up(900)]: {
+      width: '400px'
+    }
   }
 }))
 

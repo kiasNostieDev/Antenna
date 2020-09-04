@@ -19,11 +19,17 @@ const data = {
 
 const useStyles = makeStyles(theme => ({
   field: {
-    width: '400px'
+    width: '300px',
+    [theme.breakpoints.up(900)]: {
+      width: '400px'
+    }
   },
   formControl: {
     margin: theme.spacing(1),
-    width: '400px'
+    width: '300px',
+    [theme.breakpoints.up(900)]: {
+      width: '400px'
+    }
   },
   selectEmpty: {
     marginTop: theme.spacing(2)
@@ -43,7 +49,7 @@ export default function StuSi () {
     data.studentName = name
     data.mobileNumber = phone
     data.password = pwd
-    data.rollNo = names.indexOf(name)+1
+    data.rollNo = names.indexOf(name) + 1
 
     const proxyUrl = 'http://localhost:8080/'
     const urlsign = 'http://localhost:6969/students/signup'
@@ -65,7 +71,7 @@ export default function StuSi () {
               id='demo-simple-select-outlined'
               onChange={e => {
                 setName(e.target.value)
-                names.indexOf(e.target.value,e.target.value)
+                names.indexOf(e.target.value, e.target.value)
               }}
               label='Name'
             >

@@ -1,14 +1,16 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import '../Styles/Admin.css'
 import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import { currentAdmin } from '../../Data/loginData'
-import { useHistory, Link } from 'react-router-dom'
-import { caseStudies } from '../../Data/caseStudyData'
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   field: {
+    width: '300px'
+  },
+  [theme.breakpoints.up(900)]: {
     width: '400px'
   }
 }))

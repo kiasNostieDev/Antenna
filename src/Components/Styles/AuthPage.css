@@ -14,8 +14,6 @@
     }
 }
 
-.AuthPage {}
-
 .Decider {
     float: left;
     height: 100vh;
@@ -72,9 +70,17 @@
 
 @media only screen and (max-width: 900px) {
     .Decider {
-        height: fit-content;
+        height:45vh;
         width: 100%;
         float: none;
+    }
+
+    .IconName{
+        margin-top: unset;
+    }
+
+    .Choices{
+        margin-top: 10px;
     }
 
     .MainAuth {

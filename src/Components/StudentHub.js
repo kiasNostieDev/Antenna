@@ -50,11 +50,10 @@ export default function StudentHub (props) {
   const [file, setFile] = useState()
   const allInputs = { imgURL: '' }
   const [fileurl, setFileURL] = useState(allInputs)
+  console.log(fileurl)
   const [isLoading, setIsLoading] = useState('1')
   const [cases, setCases] = useState([])
   const el = useRef()
-  const fileRef = useRef()
-  const [getFile, setGetFile] = useState('')
   const history = useHistory()
 
   const data = {
@@ -110,16 +109,6 @@ export default function StudentHub (props) {
             }}>Logout</Button>
           </Toolbar>
         </AppBar>
-      </div>
-    )
-  }
-
-  function CurrentCaseStudy () {
-    return (
-      <div className='CurrentCaseStudy'>
-        <div className='StudyName'>
-          Case Study to deal with normal problems in C
-        </div>
       </div>
     )
   }

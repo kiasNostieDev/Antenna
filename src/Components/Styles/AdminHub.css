@@ -76,14 +76,14 @@
   color: #5d576b;
 }
 
-.AddCaseStudyTile{
+.AddCaseStudyTile {
   width: 90%;
   margin: 30px 0 0 40px;
   height: fit-content;
   padding: 2%;
 }
 
-.AddCaseStudyTile input{
+.AddCaseStudyTile input {
   margin-top: 10px;
   border-bottom-width: 2px;
   border-width: 0 0 3px 0;
@@ -193,32 +193,32 @@
   padding: 5px 15px 5px 15px;
 }
 
-.btn-file-input{
-    background-color: #5d576b;
-    border: none;
-    color: #ffffff;
-    font-size: 13pt;
-    font-family: 'Mulish';
-    border-radius: 3px;
-    float: left;
-    margin-top: 11px;
-    margin-left: 40px;
+.btn-file-input {
+  background-color: #5d576b;
+  border: none;
+  color: #ffffff;
+  font-size: 13pt;
+  font-family: 'Mulish';
+  border-radius: 3px;
+  float: left;
+  margin-top: 11px;
+  margin-left: 40px;
 }
 
-file-input-wrapper > .btn-file-input:hover{
-    letter-spacing: 1px;
-    background-color: #ed6b5abb;
+file-input-wrapper > .btn-file-input:hover {
+  letter-spacing: 1px;
+  background-color: #ed6b5abb;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 5px;
-} 
+}
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #ed6a5a; 
+  background: #ed6a5a;
 }
 
-.ShowBefore{
+.ShowBefore {
   width: 90%;
   height: 54vh;
   margin-left: 10%;
@@ -226,23 +226,23 @@ file-input-wrapper > .btn-file-input:hover{
   overflow: auto;
 }
 
-.AdminCaseTile{
+.AdminCaseTile {
   width: 97%;
   height: 45px;
   padding: 1%;
-  background-color: #E6EBE0;
+  background-color: #e6ebe0;
   border-radius: 3px;
   margin-top: 10px;
 }
 
-.TileTitle{
+.TileTitle {
   float: left;
   font-family: 'Mulish';
   font-size: 19pt;
   margin-top: 6px;
 }
 
-.TileIcon{
+.TileIcon {
   align-content: flex-end;
   float: right;
 }
@@ -384,5 +384,53 @@ file-input-wrapper > .btn-file-input:hover{
     width: 80%;
     margin-left: 10%;
     padding: 5px;
+  }
+
+  .MainAdminScreen {
+    width: 100%;
+    height: 90.5vh;
+  }
+
+  .AddScreen {
+    width: 100%;
+    height: inherit;
+  }
+
+  .StudentsScreen {
+    margin-top: 50px;
+    width: 100%;
+    height: inherit;
+  }
+
+  .AddCaseStudyTile {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .AddCaseStudyTile {
+    width: 90%;
+    margin: 30px 0 0 20px;
+    height: fit-content;
+    padding: 2%;
+  }
+
+  .SubmitCaseBtn {
+    border: none;
+    padding: 5px 8px 5px 8px;
+    background-color: #ed6a5a;
+    border-radius: 3px;
+    margin-top: 16px;
+    font-size: 13pt;
+    width: 100%;
+    font-family: 'Mulish';
+    color: white;
+  }
+
+  .ShowBefore {
+    width: 90%;
+    height: 54vh;
+    margin-left: 8%;
+    margin-top: 40px;
+    overflow: auto;
   }
 }

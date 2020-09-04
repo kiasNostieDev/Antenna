@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import './Styles/AdminHub.css'
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -8,12 +8,9 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import SettingsInputAntenna from '@material-ui/icons/SettingsInputAntenna'
 import Delete from '@material-ui/icons/Delete'
-import TextField from '@material-ui/core/TextField'
 import { fb } from '../FIrebase/firebase'
 import { names } from '../data'
-import { currentAdmin } from '../Data/loginData'
 import axios from 'axios'
-import Admin from './Auth/Admin'
 import { caseStudies } from '../Data/caseStudyData'
 import Loading from './Loading'
 import {useHistory} from 'react-router-dom'
@@ -48,15 +45,11 @@ export default function AdminHub () {
   const [isLoading, setIsLoading] = useState('1')
   const [startCase, setStartCase] = useState([])
   const [file, setFile] = useState()
-  const [caseArray, setCaseArray] = useState([])
   const el = useRef()
-  const allInputs = { imgURL: '' }
   const fileRef = useRef()
 
   const [fileName, setFileName] = useState('')
   const [getFile, setGetFile] = useState('')
-  const [caseName, setCaseName] = useState()
-  var cases = caseArray
 
   const [url,setUrl] = useState('')
   const nullState = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',]
@@ -71,7 +64,7 @@ export default function AdminHub () {
     caseStudetitle: '',
     fileLink: ''
   }
-  const urlsign = 'http://localhost:6969/cases'
+
   const proxyUrl = 'http://localhost:8080/'
   const urlcase = 'http://localhost:6969/cases'
 
@@ -169,6 +162,7 @@ export default function AdminHub () {
   async function handleClickCase (casename) {
     setCurrentColorList([])
     setCurCase(casename)
+    console.log(curCase)
     const allGuysData = {
       caseStudy: casename
     }
@@ -180,6 +174,7 @@ export default function AdminHub () {
       res.data.map(rol=>{
         nullState[rol.rollNo-1] = rol.fileLink
         nullColor[rol.rollNo-1] = '#00ff00'
+        return null
       })
       setCurrentColorList(nullColor)
       setCurrentLinkList(nullState)
@@ -187,7 +182,6 @@ export default function AdminHub () {
   }
 
   function AdminCaseTile (props) {
-    const link = props.link
     return (
       <div
         className='AdminCaseTile'
