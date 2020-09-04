@@ -1,0 +1,32 @@
+@keyframes loader {
+    0% {
+      text-shadow: 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555;
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+    }
+    100% {
+      text-shadow: 0 -1px #555555, 0 -2px #555555, 0 -3px #555555, 0 -4px #555555, 0 -5px #555555, 0 -6px #555555, 0 -7px #555555, 0 -8px #555555;
+      -webkit-transform: translateY(8px);
+              transform: translateY(8px);
+    }
+  }
+
+.LoadingBox {
+  height: 100vh;
+  width: 100%;
+  background-color: #ed6a5a;
+}
+
+.textLoad {
+  font-size: 330pt;
+  color: white;
+  font-family: 'Geo';
+  animation-name: loader;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  transition: transform 1s ease-in-out;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

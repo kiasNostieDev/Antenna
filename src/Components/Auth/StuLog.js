@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import { useHistory, Link } from 'react-router-dom'
 import { currentLogin } from '../../Data/loginData'
+import { names } from '../../data'
 
 
 const data = {
@@ -43,7 +44,7 @@ export default function StuLog () {
         currentLogin.mail = res.data.email
         currentLogin.phone = data.mobileNumber
         currentLogin.jwt = res.headers['auth-token']
-        currentLogin.rollNo = res.data.rollNo
+        currentLogin.rollNo = String(names.indexOf(currentLogin.name)+1)
         history.push('/student')
       }
     })

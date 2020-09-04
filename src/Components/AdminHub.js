@@ -15,6 +15,7 @@ import { currentAdmin } from '../Data/loginData'
 import axios from 'axios'
 import Admin from './Auth/Admin'
 import { caseStudies } from '../Data/caseStudyData'
+import Loading from './Loading'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -294,6 +295,7 @@ export default function AdminHub () {
 
   function Decider () {
     if (isLoading === '1') {
+      return <Loading />
     }
     return (
       <div>

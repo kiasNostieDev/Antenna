@@ -10,6 +10,7 @@ import './Styles/StudentHub.css'
 import { fb } from '../FIrebase/firebase'
 import axios from 'axios'
 import { currentLogin } from '../Data/loginData'
+import Loading from './Loading'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -164,11 +165,11 @@ export default function StudentHub (props) {
     data.studentName = currentLogin.name
     data.rollNo = currentLogin.rollNo
 
+    setIsLoading('0')
+
     imageUpload.put(file).then(
       snapshot => {
         imageUpload.getDownloadURL().then(url => {
-          console.log(data)
-
           setFileURL(url)
           console.log(url)
           data.fileLink = url
@@ -186,6 +187,8 @@ export default function StudentHub (props) {
             )
             .then(res => {
               console.log(res)
+              setIsLoading('1')
+              alert('Case Study Submitted Successfully!')
             })
         })
       },
@@ -197,7 +200,7 @@ export default function StudentHub (props) {
 
   function Decider () {
     if (isLoading === '1') {
-      return <>Loading...</>
+      return <Loading/>
     }
     return (
       <div>
