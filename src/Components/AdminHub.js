@@ -16,6 +16,7 @@ import axios from 'axios'
 import Admin from './Auth/Admin'
 import { caseStudies } from '../Data/caseStudyData'
 import Loading from './Loading'
+import {useHistory} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,6 +44,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function AdminHub () {
+  const history = useHistory()
   const [isLoading, setIsLoading] = useState('1')
   const [startCase, setStartCase] = useState([])
   const [file, setFile] = useState()
@@ -133,7 +135,9 @@ export default function AdminHub () {
             <Typography variant='h6' className={classes.title}>
               Antenna
             </Typography>
-            <Button color='inherit'>Logout</Button>
+            <Button color='inherit' onClick={()=>{
+              history.goBack()
+            }}>Logout</Button>
           </Toolbar>
         </AppBar>
       </div>

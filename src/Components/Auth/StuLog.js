@@ -38,13 +38,13 @@ export default function StuLog () {
         setIndiColor('#ED6A5A')
         setAlertText('Wrong Credentials')
       }else{
-        localStorage.setItem('AntennaWaveForm', res.data)
         console.log(res.data)
         currentLogin.name = res.data.studentName
         currentLogin.mail = res.data.email
         currentLogin.phone = data.mobileNumber
         currentLogin.jwt = res.headers['auth-token']
         currentLogin.rollNo = String(names.indexOf(currentLogin.name)+1)
+        localStorage.setItem('AntennaWaveForm', JSON.stringify(currentLogin))
         history.push('/student')
       }
     })

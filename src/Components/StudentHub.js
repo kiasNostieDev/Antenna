@@ -11,6 +11,8 @@ import { fb } from '../FIrebase/firebase'
 import axios from 'axios'
 import { currentLogin } from '../Data/loginData'
 import Loading from './Loading'
+import { names } from '../data'
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -53,6 +55,7 @@ export default function StudentHub (props) {
   const el = useRef()
   const fileRef = useRef()
   const [getFile, setGetFile] = useState('')
+  const history = useHistory()
 
   const data = {
     studentName: '',
@@ -63,6 +66,14 @@ export default function StudentHub (props) {
   }
   const proxyUrl = 'http://localhost:8080/'
   const urlcase = 'http://localhost:6969/cases'
+  const urlIndiCase = 'http://localhost:6969/specific'
+
+  const getCurr = JSON.parse(localStorage.getItem('AntennaWaveForm'))
+  currentLogin.jwt = getCurr.jwt
+  currentLogin.mail = getCurr.mail
+  currentLogin.phone = getCurr.phone
+  currentLogin.rollNo = getCurr.rollNo
+  currentLogin.name = getCurr.name
 
   if (isLoading === '1') {
     axios.get(proxyUrl + urlcase).then(res => {
@@ -93,7 +104,10 @@ export default function StudentHub (props) {
             <Typography variant='h6' className={classes.title}>
               Antenna
             </Typography>
-            <Button color='inherit'>Logout</Button>
+            <Button color='inherit' onClick={()=>{
+              localStorage.removeItem('AntennaWaveForm')
+              history.goBack()
+            }}>Logout</Button>
           </Toolbar>
         </AppBar>
       </div>
@@ -156,6 +170,18 @@ export default function StudentHub (props) {
     )
   }
 
+  function checkFiles (name) {
+    const checkwith = {
+      rollNo: names.indexOf(currentLogin.name) + 1,
+      studentName: currentLogin.name,
+      caseStudy: name
+    }
+    axios.post(proxyUrl + urlIndiCase, checkwith).then(res => {
+      if (res.data.straightness) return true
+      return false
+    })
+  }
+
   function handleUpload (caseTitle) {
     const fbstorage = fb.storage().ref('/docs/solutions')
     const imageUpload = fbstorage.child(currentLogin.name + caseTitle)
@@ -175,21 +201,36 @@ export default function StudentHub (props) {
           data.fileLink = url
           data.straightness = 'true'
           console.log(data.studentName, data)
-          axios
-            .post(
-              proxyUrl + urlsign,
-              data,
-              {
+
+          if (!checkFiles(caseTitle)) {
+            axios
+              .post(proxyUrl + urlsign, data, {
                 headers: {
                   'auth-token': currentLogin.jwt
                 }
-              }
-            )
-            .then(res => {
-              console.log(res)
-              setIsLoading('1')
-              alert('Case Study Submitted Successfully!')
-            })
+              })
+              .then(res => {
+                console.log(res)
+                setIsLoading('1')
+                alert('Case Study Submitted Successfully!')
+              })
+          } else {
+            const patcherurl = 'https://an73nna.herokuapp.com/hw/patch'
+            axios
+              .patch(proxyUrl + patcherurl, data, {
+                headers: {
+                  'auth-token': currentLogin.jwt
+                },
+                params: {
+                  "rollNo":data.rollNo
+                }
+              })
+              .then(res => {
+                console.log(res)
+                setIsLoading('1')
+                alert('Case Study Submitted Successfully!')
+              })
+          }
         })
       },
       err => {
@@ -200,7 +241,7 @@ export default function StudentHub (props) {
 
   function Decider () {
     if (isLoading === '1') {
-      return <Loading/>
+      return <Loading />
     }
     return (
       <div>
@@ -208,16 +249,19 @@ export default function StudentHub (props) {
         <HelloStudent name={currentLogin.name} />
         <div className='HeadingCase'>Current_Case_Studies</div>
         <div>
-          {cases.slice(0).reverse().map(item => {
-            console.log(item['caseStudytitle'])
-            return (
-              <Tile
-                name={item['caseStudytitle']}
-                click={handleUpload}
-                link={item['fileLink']}
-              />
-            )
-          })}
+          {cases
+            .slice(0)
+            .reverse()
+            .map(item => {
+              console.log(item['caseStudytitle'])
+              return (
+                <Tile
+                  name={item['caseStudytitle']}
+                  click={handleUpload}
+                  link={item['fileLink']}
+                />
+              )
+            })}
         </div>
       </div>
     )
