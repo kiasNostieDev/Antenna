@@ -277,6 +277,7 @@ file-input-wrapper > .btn-file-input:hover{
   font-family: 'Mulish';
   color: #5d576b;
   margin-top: 6px;
+  font-weight: 800;
 }
 
 .nthTile:hover {

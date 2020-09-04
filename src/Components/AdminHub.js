@@ -42,6 +42,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function AdminHub () {
+  const [isLoading, setIsLoading] = useState('1')
+  const [startCase, setStartCase] = useState([])
   const [file, setFile] = useState()
   const [caseArray, setCaseArray] = useState([])
   const el = useRef()
@@ -53,14 +55,30 @@ export default function AdminHub () {
   const [caseName, setCaseName] = useState()
   var cases = caseArray
 
-  const data = {
-    caseStudetitle: '',
-    fileLink: '',
-  }
-  const proxyUrl = 'http://localhost:8080/'
-  const urlsign = 'http://localhost:6969/cases'
+  const [url,setUrl] = useState('')
+  const nullState = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',]
+  const nullColor = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',]
+
+  const [curCase, setCurCase] = useState('')
+  const [currentColorList, setCurrentColorList] = useState(nullColor)
+  const [currentLinkList, setCurrentLinkList] = useState(nullState)
 
   const classes = useStyles()
+  const data = {
+    caseStudetitle: '',
+    fileLink: ''
+  }
+  const urlsign = 'http://localhost:6969/cases'
+  const proxyUrl = 'http://localhost:8080/'
+  const urlcase = 'http://localhost:6969/cases'
+
+  if (isLoading === '1') {
+    axios.get(proxyUrl + urlcase).then(res => {
+      const Cases = res.data
+      setStartCase(Cases)
+      setIsLoading('0')
+    })
+  }
 
   function handleChange (event) {
     setFileName(el.current.value)
@@ -80,13 +98,12 @@ export default function AdminHub () {
           console.log(data.fileLink)
           data.caseStudytitle = fileName
 
-          const proxyUrl = 'http://localhost:8080/'
           const urlsign = 'http://localhost:6969/cases'
           axios.post(proxyUrl + urlsign, data).then(res => {
             console.log(res)
             alert('Uploaded the CaseStudy Meta!')
-            axios.get(proxyUrl+urlsign).then(res=>{
-              setCaseArray(res.data)
+            axios.get(proxyUrl + urlsign).then(res => {
+              setStartCase(res.data)
               console.log(caseStudies)
             })
           })
@@ -124,6 +141,9 @@ export default function AdminHub () {
 
   function handleNameClick (item) {
     setGetFile(item)
+    const index = names.indexOf(item)
+    const URL = currentLinkList[index]
+    setUrl(URL)
   }
 
   function StudentTileAdmin (props) {
@@ -131,6 +151,7 @@ export default function AdminHub () {
     return (
       <div
         className='nthTile'
+        style={{color:currentColorList[names.indexOf(item)]}}
         onClick={() => {
           props.clickfunc(item)
         }}
@@ -140,10 +161,35 @@ export default function AdminHub () {
     )
   }
 
+  async function handleClickCase (casename) {
+    setCurrentColorList([])
+    setCurCase(casename)
+    const allGuysData = {
+      caseStudy: casename
+    }
+    var result = []
+    const urlHw = 'http://localhost:6969/hw/case'
+
+    axios.post(proxyUrl+urlHw,allGuysData).then(res=>{
+      result.push(res.data)
+      res.data.map(rol=>{
+        nullState[rol.rollNo-1] = rol.fileLink
+        nullColor[rol.rollNo-1] = '#00ff00'
+      })
+      setCurrentColorList(nullColor)
+      setCurrentLinkList(nullState)
+    })
+  }
+
   function AdminCaseTile (props) {
     const link = props.link
     return (
-      <div className='AdminCaseTile'>
+      <div
+        className='AdminCaseTile'
+        onClick={() => {
+          props.click(props.caseName)
+        }}
+      >
         <div className='TileTitle'>{props.caseName}</div>
         <div className='TileIcon'>
           <IconButton
@@ -173,7 +219,13 @@ export default function AdminHub () {
             <div className='HeadingMain'>Case_Studies</div>
           </div>
           <div className='AddCaseStudyTile'>
-            <input placeholder='CaseStudyTitle' type='text' id='outlined-basic' className={classes.field} ref={el} />
+            <input
+              placeholder='CaseStudyTitle'
+              type='text'
+              id='outlined-basic'
+              className={classes.field}
+              ref={el}
+            />
             <div className='file-input-wrapper'>
               <button className='btn-file-input'>Upload File</button>
               <input
@@ -188,11 +240,19 @@ export default function AdminHub () {
             </button>
           </div>
           <div className='ShowBefore'>
-            {
-            cases.map(item=>{
-              return <AdminCaseTile id={item.caseStudetitle} caseName={item['caseStudytitle']} link={item['fileLink']}/>
-            })
-          }
+            {startCase
+              .slice(0)
+              .reverse()
+              .map(item => {
+                return (
+                  <AdminCaseTile
+                    id={item.caseStudetitle}
+                    caseName={item['caseStudytitle']}
+                    link={item['fileLink']}
+                    click={handleClickCase}
+                  />
+                )
+              })}
           </div>
         </div>
         <div className='StudentsScreen'>
@@ -200,7 +260,10 @@ export default function AdminHub () {
             {names.map(item => {
               return (
                 <>
-                  <StudentTileAdmin name={item} clickfunc={handleNameClick} />
+                  <StudentTileAdmin
+                    name={item}
+                    clickfunc={handleNameClick}
+                  />
                 </>
               )
             })}
@@ -217,7 +280,7 @@ export default function AdminHub () {
                 marginTop: '20px'
               }}
             >
-              <button className='GetFileBtn'>File</button>
+              <button className='GetFileBtn' onClick={downFile}>File</button>
             </div>
           </div>
         </div>
@@ -225,10 +288,24 @@ export default function AdminHub () {
     )
   }
 
+  function downFile(){
+    window.open(url)
+  }
+
+  function Decider () {
+    if (isLoading === '1') {
+    }
+    return (
+      <div>
+        <AppBarCustom />
+        <MainAdminScreen />
+      </div>
+    )
+  }
+
   return (
     <div>
-      <AppBarCustom />
-      <MainAdminScreen />
+      <Decider />
     </div>
   )
 }

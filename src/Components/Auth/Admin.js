@@ -31,7 +31,7 @@ export default function Admin () {
     data.password = password
 
     const proxyUrl = 'http://localhost:8080/'
-    const urlsign = 'http://localhost:4500/admin/login'
+    const urlsign = 'http://localhost:6969/admin/login'
     axios.post(proxyUrl + urlsign, data).then(res=>{
       if (res.data.antenna) {
         setIndiColor('#ED6A5A')

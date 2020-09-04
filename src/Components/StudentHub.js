@@ -140,7 +140,7 @@ export default function StudentHub (props) {
         <div className='CaseStudyUpload'>
           <div className='file-input-wrapper'>
             <button className='btn-file-input'>UploadFile</button>
-            <input type='file' name='file' ref={el} onChange={handleChange}/>
+            <input type='file' name='file' ref={el} onChange={handleChange} />
           </div>
         </div>
         <button
@@ -160,21 +160,30 @@ export default function StudentHub (props) {
     const imageUpload = fbstorage.child(currentLogin.name + caseTitle)
     const proxyUrl = 'http://localhost:8080/'
     const urlsign = 'https://an73nna.herokuapp.com/hw'
+    data.caseStudy = caseTitle
+    data.studentName = currentLogin.name
+    data.rollNo = currentLogin.rollNo
 
     imageUpload.put(file).then(
       snapshot => {
         imageUpload.getDownloadURL().then(url => {
+          console.log(data)
+
           setFileURL(url)
           console.log(url)
           data.fileLink = url
-          data.straightness = '1'
-          data.caseStudy = caseTitle
-          data.studentName = currentLogin.name
-          data.rollNo = currentLogin.rollNo
-          console.log(data.name)
-          axios.post(proxyUrl + urlsign, {"body":data},{headers:{
-            "auth-token":currentLogin.jwt
-          }})
+          data.straightness = 'true'
+          console.log(data.studentName, data)
+          axios
+            .post(
+              proxyUrl + urlsign,
+              data,
+              {
+                headers: {
+                  'auth-token': currentLogin.jwt
+                }
+              }
+            )
             .then(res => {
               console.log(res)
             })
@@ -196,7 +205,7 @@ export default function StudentHub (props) {
         <HelloStudent name={currentLogin.name} />
         <div className='HeadingCase'>Current_Case_Studies</div>
         <div>
-          {cases.map(item => {
+          {cases.slice(0).reverse().map(item => {
             console.log(item['caseStudytitle'])
             return (
               <Tile
