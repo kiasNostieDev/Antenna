@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom'
 import { currentLogin } from '../../Data/loginData'
 import { names } from '../../data'
 
-
 const data = {
   mobileNumber: '',
   password: ''
@@ -35,18 +34,19 @@ export default function StuLog () {
     data.password = pwd
 
     const proxyUrl = 'http://localhost:8080/'
-    const urlsign = 'http://localhost:6969/students/login'
+    const urlsign = 'https://an73nna.herokuapp.com/students/login'
     axios.post(proxyUrl + urlsign, data).then(res => {
+      console.log('heyThere')
       if (res.data.antenna) {
         setIndiColor('#ED6A5A')
         setAlertText('Wrong Credentials')
-      }else{
+      } else {
         console.log(res.data)
         currentLogin.name = res.data.studentName
         currentLogin.mail = res.data.email
         currentLogin.phone = data.mobileNumber
         currentLogin.jwt = res.headers['auth-token']
-        currentLogin.rollNo = String(names.indexOf(currentLogin.name)+1)
+        currentLogin.rollNo = String(names.indexOf(currentLogin.name) + 1)
         localStorage.setItem('AntennaWaveForm', JSON.stringify(currentLogin))
         history.push('/student')
       }

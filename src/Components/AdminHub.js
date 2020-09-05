@@ -219,7 +219,7 @@ export default function AdminHub () {
           </div>
           <div className='AddCaseStudyTile'>
             <input
-              placeholder='CaseStudyTitle'
+              placeholder='value'
               type='text'
               id='outlined-basic'
               className={classes.field}

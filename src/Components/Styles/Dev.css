@@ -1,0 +1,62 @@
+.Dev {
+  width: 100%;
+  height: 900vh;
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.inputDev input {
+  border: none;
+  margin: 10px;
+  padding: 10px;
+  float: left;
+}
+
+.devlog button {
+  margin: 10px;
+  border: none;
+  font-family: 'Geo';
+  font-size: 25pt;
+  padding: 0 20px 0 20px;
+  letter-spacing: 2px;
+}
+
+.DataDev button {
+  font-size: 20pt;
+  border: none;
+  letter-spacing: 1px;
+  font-family: 'Geo';
+  margin: 30px 10px 10px 10px;
+  padding: 10px;
+}
+
+.devlog button:hover {
+  background-color: #6c698d;
+  color: white;
+}
+
+.DataDev button:hover {
+  background-color: #6c698d;
+  color: white;
+}
+
+.DataTile {
+  width: fit-content;
+  height: fit-content;
+  margin: 10px;
+  text-align: end;
+  border-radius: 4px;
+  color: #9d9dff;
+}
+
+.textDev {
+  font-family: 'Mulish';
+  font-size: 17pt;
+  float: left;
+  margin: 0 20px 0 20px;
+}
+
+.leftDev {
+  float: left;
+}

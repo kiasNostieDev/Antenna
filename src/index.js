@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import App from './App'
 import StudentHub from './Components/StudentHub'
 import AdminHub from './Components/AdminHub'
+import Dev from './Components/Dev'
 
 
 ReactDOM.render(
@@ -14,6 +15,7 @@ ReactDOM.render(
         <Route exact path='/' component={App} />
         <Route path='/student/' component={StudentHub} />
         <Route path='/root' component={AdminHub} />
+        <Route path='/dev' component={Dev} />
       </Switch>
     </div>
   </Router>,

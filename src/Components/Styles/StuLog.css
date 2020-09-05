@@ -36,6 +36,7 @@
   padding: 10px;
   text-transform: uppercase;
   color: white;
+  cursor: 'pointer';
 }
 
 .btnlogin:hover {
