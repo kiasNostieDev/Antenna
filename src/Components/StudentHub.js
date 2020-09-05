@@ -64,8 +64,8 @@ export default function StudentHub (props) {
     fileLink: ''
   }
   const proxyUrl = 'http://localhost:8080/'
-  const urlcase = 'http://localhost:6969/cases'
-  const urlIndiCase = 'http://localhost:6969/specific'
+  const urlcase = 'https://an73nna.heroku.com/cases'
+  const urlIndiCase = 'https://an73nna.heroku.com/specific'
 
   const getCurr = JSON.parse(localStorage.getItem('AntennaWaveForm'))
   currentLogin.jwt = getCurr.jwt
@@ -75,14 +75,14 @@ export default function StudentHub (props) {
   currentLogin.name = getCurr.name
 
   if (isLoading === '1') {
-    axios.get(proxyUrl + urlcase).then(res => {
+    axios.get(urlcase).then(res => {
       const Cases = res.data
       setCases(Cases)
       setIsLoading('0')
     })
   }
 
-  console.log(currentLogin)
+  // console.log(currentLogin)
 
   // console.log(props.location.state)
 
@@ -165,7 +165,7 @@ export default function StudentHub (props) {
       studentName: currentLogin.name,
       caseStudy: name
     }
-    axios.post(proxyUrl + urlIndiCase, checkwith).then(res => {
+    axios.post(urlIndiCase, checkwith).then(res => {
       if (res.data.straightness) return true
       return false
     })
@@ -174,7 +174,6 @@ export default function StudentHub (props) {
   function handleUpload (caseTitle) {
     const fbstorage = fb.storage().ref('/docs/solutions')
     const imageUpload = fbstorage.child(currentLogin.name + caseTitle)
-    const proxyUrl = 'http://localhost:8080/'
     const urlsign = 'https://an73nna.herokuapp.com/hw'
     data.caseStudy = caseTitle
     data.studentName = currentLogin.name
@@ -193,7 +192,7 @@ export default function StudentHub (props) {
 
           if (!checkFiles(caseTitle)) {
             axios
-              .post(proxyUrl + urlsign, data, {
+              .post( urlsign, data, {
                 headers: {
                   'auth-token': currentLogin.jwt
                 }
@@ -206,7 +205,7 @@ export default function StudentHub (props) {
           } else {
             const patcherurl = 'https://an73nna.herokuapp.com/hw/patch'
             axios
-              .patch(proxyUrl + patcherurl, data, {
+              .patch(patcherurl, data, {
                 headers: {
                   'auth-token': currentLogin.jwt
                 },

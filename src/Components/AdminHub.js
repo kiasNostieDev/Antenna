@@ -66,10 +66,10 @@ export default function AdminHub () {
   }
 
   const proxyUrl = 'http://localhost:8080/'
-  const urlcase = 'http://localhost:6969/cases'
+  const urlcase = 'https://an73nna.heroku.com/cases'
 
   if (isLoading === '1') {
-    axios.get(proxyUrl + urlcase).then(res => {
+    axios.get(urlcase).then(res => {
       const Cases = res.data
       setStartCase(Cases)
       setIsLoading('0')
@@ -94,8 +94,8 @@ export default function AdminHub () {
           console.log(data.fileLink)
           data.caseStudytitle = fileName
 
-          const urlsign = 'http://localhost:6969/cases'
-          axios.post(proxyUrl + urlsign, data).then(res => {
+          const urlsign = 'https://an73nna.heroku.com/cases'
+          axios.post(urlsign, data).then(res => {
             console.log(res)
             alert('Uploaded the CaseStudy Meta!')
             axios.get(proxyUrl + urlsign).then(res => {
@@ -167,9 +167,9 @@ export default function AdminHub () {
       caseStudy: casename
     }
     var result = []
-    const urlHw = 'http://localhost:6969/hw/case'
+    const urlHw = 'https://an73nna.heroku.com/dev/login/hw/case'
 
-    axios.post(proxyUrl+urlHw,allGuysData).then(res=>{
+    axios.post(urlHw,allGuysData).then(res=>{
       result.push(res.data)
       res.data.map(rol=>{
         nullState[rol.rollNo-1] = rol.fileLink

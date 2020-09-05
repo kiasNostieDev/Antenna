@@ -35,7 +35,7 @@ export default function StuLog () {
 
     const proxyUrl = 'http://localhost:8080/'
     const urlsign = 'https://an73nna.herokuapp.com/students/login'
-    axios.post(proxyUrl + urlsign, data).then(res => {
+    axios.post(urlsign, data).then(res => {
       console.log('heyThere')
       if (res.data.antenna) {
         setIndiColor('#ED6A5A')

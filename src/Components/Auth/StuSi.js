@@ -52,8 +52,8 @@ export default function StuSi () {
     data.rollNo = names.indexOf(name) + 1
 
     const proxyUrl = 'http://localhost:8080/'
-    const urlsign = 'http://localhost:6969/students/signup'
-    axios.post(proxyUrl + urlsign, data).then(res => {
+    const urlsign = 'https://an73nna.heroku.com/students/signup'
+    axios.post(urlsign, data).then(res => {
       console.log(res)
       alert('Now Login to your account')
     })

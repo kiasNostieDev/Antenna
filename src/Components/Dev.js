@@ -114,9 +114,8 @@ export default function Dev () {
       password: pwd
     }
     console.log(dataDev)
-    const proxyUrl = 'http://localhost:8080/'
-    const devUrl = 'http://localhost:6969/dev/login'
-    axios.post(proxyUrl + devUrl, dataDev).then(res => {
+    const devUrl = 'http://an73nna.heroku.com/dev/login'
+    axios.post(devUrl, dataDev).then(res => {
       localStorage.setItem('DevWaveForm', res.headers['auth-token'])
       setDevMode('1')
       console.log('ola', res.data)
