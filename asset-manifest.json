@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Antenna/static/css/main.cca44e13.chunk.css",
+    "main.js": "/Antenna/static/js/main.a2148e22.chunk.js",
+    "main.js.map": "/Antenna/static/js/main.a2148e22.chunk.js.map",
+    "runtime-main.js": "/Antenna/static/js/runtime-main.8b83667a.js",
+    "runtime-main.js.map": "/Antenna/static/js/runtime-main.8b83667a.js.map",
+    "static/js/2.47942751.chunk.js": "/Antenna/static/js/2.47942751.chunk.js",
+    "static/js/2.47942751.chunk.js.map": "/Antenna/static/js/2.47942751.chunk.js.map",
+    "index.html": "/Antenna/index.html",
+    "precache-manifest.c74c8d96847e13688e9d527bb064ca1c.js": "/Antenna/precache-manifest.c74c8d96847e13688e9d527bb064ca1c.js",
+    "service-worker.js": "/Antenna/service-worker.js",
+    "static/css/main.cca44e13.chunk.css.map": "/Antenna/static/css/main.cca44e13.chunk.css.map",
+    "static/js/2.47942751.chunk.js.LICENSE.txt": "/Antenna/static/js/2.47942751.chunk.js.LICENSE.txt",
+    "static/media/antennna.jpg": "/Antenna/static/media/antennna.e1057d32.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8b83667a.js",
+    "static/js/2.47942751.chunk.js",
+    "static/css/main.cca44e13.chunk.css",
+    "static/js/main.a2148e22.chunk.js"
+  ]
+}
