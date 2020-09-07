@@ -33,8 +33,14 @@ export default function Admin () {
     data.password = password
 
     const proxyUrl = 'http://localhost:8080/'
-    const urlsign = 'https://an73nna.heroku.com/admin/login'
-    axios.post(urlsign, data).then(res=>{
+    const urlsign = 'https://an73nna.herokuapp.com/admin/login'
+    axios.post(urlsign, data,{
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+      }
+    }).then(res=>{
       if (res.data.antenna) {
         setIndiColor('#ED6A5A')
         setAlertText('Wrong Credentials')

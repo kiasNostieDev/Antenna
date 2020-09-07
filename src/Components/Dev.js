@@ -114,8 +114,14 @@ export default function Dev () {
       password: pwd
     }
     console.log(dataDev)
-    const devUrl = 'http://an73nna.heroku.com/dev/login'
-    axios.post(devUrl, dataDev).then(res => {
+    const devUrl = 'http://an73nna.herokuapp.com/dev/login'
+    axios.post(devUrl, dataDev,{
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+      }
+    }).then(res => {
       localStorage.setItem('DevWaveForm', res.headers['auth-token'])
       setDevMode('1')
       console.log('ola', res.data)

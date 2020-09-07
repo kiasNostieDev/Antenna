@@ -12,7 +12,7 @@ import axios from 'axios'
 import { currentLogin } from '../Data/loginData'
 import Loading from './Loading'
 import { names } from '../data'
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,8 +64,8 @@ export default function StudentHub (props) {
     fileLink: ''
   }
   const proxyUrl = 'http://localhost:8080/'
-  const urlcase = 'https://an73nna.heroku.com/cases'
-  const urlIndiCase = 'https://an73nna.heroku.com/specific'
+  const urlcase = 'https://an73nna.herokuapp.com/cases'
+  const urlIndiCase = 'https://an73nna.herokuapp.com/specific'
 
   const getCurr = JSON.parse(localStorage.getItem('AntennaWaveForm'))
   currentLogin.jwt = getCurr.jwt
@@ -75,11 +75,19 @@ export default function StudentHub (props) {
   currentLogin.name = getCurr.name
 
   if (isLoading === '1') {
-    axios.get(urlcase).then(res => {
-      const Cases = res.data
-      setCases(Cases)
-      setIsLoading('0')
-    })
+    axios
+      .get(urlcase, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        }
+      })
+      .then(res => {
+        const Cases = res.data
+        setCases(Cases)
+        setIsLoading('0')
+      })
   }
 
   // console.log(currentLogin)
@@ -103,10 +111,15 @@ export default function StudentHub (props) {
             <Typography variant='h6' className={classes.title}>
               Antenna
             </Typography>
-            <Button color='inherit' onClick={()=>{
-              localStorage.removeItem('AntennaWaveForm')
-              history.goBack()
-            }}>Logout</Button>
+            <Button
+              color='inherit'
+              onClick={() => {
+                localStorage.removeItem('AntennaWaveForm')
+                history.goBack()
+              }}
+            >
+              Logout
+            </Button>
           </Toolbar>
         </AppBar>
       </div>
@@ -192,9 +205,12 @@ export default function StudentHub (props) {
 
           if (!checkFiles(caseTitle)) {
             axios
-              .post( urlsign, data, {
+              .post(urlsign, data, {
                 headers: {
-                  'auth-token': currentLogin.jwt
+                  'auth-token': currentLogin.jwt,
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Methods': 'POST',
+                  'Access-Control-Allow-Headers': 'Content-Type, Authorization'
                 }
               })
               .then(res => {
@@ -207,10 +223,13 @@ export default function StudentHub (props) {
             axios
               .patch(patcherurl, data, {
                 headers: {
-                  'auth-token': currentLogin.jwt
+                  'auth-token': currentLogin.jwt,
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Methods': 'POST',
+                  'Access-Control-Allow-Headers': 'Content-Type, Authorization'
                 },
                 params: {
-                  "rollNo":data.rollNo
+                  rollNo: data.rollNo
                 }
               })
               .then(res => {

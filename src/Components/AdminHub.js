@@ -66,10 +66,17 @@ export default function AdminHub () {
   }
 
   const proxyUrl = 'http://localhost:8080/'
-  const urlcase = 'https://an73nna.heroku.com/cases'
+  const urlcase = 'https://an73nna.herokuapp.com/cases'
 
   if (isLoading === '1') {
-    axios.get(urlcase).then(res => {
+    const proxyurl = "https://cors-anywhere.herokuapp.com/"
+    axios.get(proxyurl+urlcase,{
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+      }
+    }).then(res => {
       const Cases = res.data
       setStartCase(Cases)
       setIsLoading('0')
@@ -94,8 +101,14 @@ export default function AdminHub () {
           console.log(data.fileLink)
           data.caseStudytitle = fileName
 
-          const urlsign = 'https://an73nna.heroku.com/cases'
-          axios.post(urlsign, data).then(res => {
+          const urlsign = 'https://an73nna.herokuapp.com/cases'
+          axios.post(urlsign, data,{
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Methods': 'POST',
+              'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+            }
+          }).then(res => {
             console.log(res)
             alert('Uploaded the CaseStudy Meta!')
             axios.get(proxyUrl + urlsign).then(res => {
@@ -167,9 +180,15 @@ export default function AdminHub () {
       caseStudy: casename
     }
     var result = []
-    const urlHw = 'https://an73nna.heroku.com/dev/login/hw/case'
+    const urlHw = 'https://an73nna.herokuapp.com/hw/case'
 
-    axios.post(urlHw,allGuysData).then(res=>{
+    axios.post(urlHw,allGuysData,{
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+      }
+    }).then(res=>{
       result.push(res.data)
       res.data.map(rol=>{
         nullState[rol.rollNo-1] = rol.fileLink

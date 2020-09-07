@@ -52,11 +52,19 @@ export default function StuSi () {
     data.rollNo = names.indexOf(name) + 1
 
     const proxyUrl = 'http://localhost:8080/'
-    const urlsign = 'https://an73nna.heroku.com/students/signup'
-    axios.post(urlsign, data).then(res => {
-      console.log(res)
-      alert('Now Login to your account')
-    })
+    const urlsign = 'https://an73nna.herokuapp.com/students/signup'
+    axios
+      .post(urlsign, data, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        }
+      })
+      .then(res => {
+        console.log(res)
+        alert('Now Login to your account')
+      })
   }
 
   return (
