@@ -51,7 +51,7 @@ export default function StuSi () {
     data.password = pwd
     data.rollNo = names.indexOf(name) + 1
 
-    const proxyUrl = 'http://localhost:8080/'
+    // const proxyUrl = 'http://localhost:8080/'
     const urlsign = 'https://an73nna.herokuapp.com/students/signup'
     axios
       .post(urlsign, data, {

@@ -33,9 +33,9 @@ export default function StuLog () {
     data.mobileNumber = phone
     data.password = pwd
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/"
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/"
     const urlsign = 'https://an73nna.herokuapp.com/students/login'
-    axios.post(proxyurl+urlsign, data,{
+    axios.post(urlsign, data,{
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'POST',

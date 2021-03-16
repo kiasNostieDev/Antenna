@@ -32,7 +32,7 @@ export default function Admin () {
     data.email = mail
     data.password = password
 
-    const proxyUrl = 'http://localhost:8080/'
+    // const proxyUrl = 'http://localhost:8080/'
     const urlsign = 'https://an73nna.herokuapp.com/admin/login'
     axios.post(urlsign, data,{
       headers: {

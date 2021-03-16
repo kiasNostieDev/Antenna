@@ -63,7 +63,7 @@ export default function StudentHub (props) {
     straightness: '',
     fileLink: ''
   }
-  const proxyUrl = 'http://localhost:8080/'
+  // const proxyUrl = 'http://localhost:8080/'
   const urlcase = 'https://an73nna.herokuapp.com/cases'
   const urlIndiCase = 'https://an73nna.herokuapp.com/specific'
 

@@ -2,12 +2,12 @@ import './Styles/Dev.css'
 import React, { useRef, useState } from 'react'
 import antenna from '../Data/antennna.jpg'
 import { Typography, makeStyles } from '@material-ui/core'
-import IconButton from '@material-ui/core/IconButton'
-import People from '@material-ui/icons/People'
-import Star from '@material-ui/icons/Star'
-import Phone from '@material-ui/icons/Phone'
-import Mail from '@material-ui/icons/Mail'
-import ConfirmationNumber from '@material-ui/icons/ConfirmationNumber'
+// import IconButton from '@material-ui/core/IconButton'
+// import People from '@material-ui/icons/People'
+// import Star from '@material-ui/icons/Star'
+// import Phone from '@material-ui/icons/Phone'
+// import Mail from '@material-ui/icons/Mail'
+// import ConfirmationNumber from '@material-ui/icons/ConfirmationNumber'
 import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
@@ -34,68 +34,68 @@ export default function Dev () {
   const [pwd, setPwd] = useState()
   const [devMode, setDevMode] = useState('0')
 
-  function DataTile () {
-    const classes = useStyles()
-    return (
-      <div className='DataTile'>
-        <div className='DevRoll textDev leftDev'>
-          <IconButton
-            edge='start'
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='menu'
-          >
-            <ConfirmationNumber />
-          </IconButton>
-          33
-        </div>
-        <div className='DevName textDev leftDev'>
-          <IconButton
-            edge='start'
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='menu'
-          >
-            <People />
-          </IconButton>
-          name
-        </div>
-        <div className='DevMobile textDev leftDev'>
-          <IconButton
-            edge='start'
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='menu'
-          >
-            <Phone />
-          </IconButton>
-          4940930934
-        </div>
-        <div className='DevMail textDev leftDev'>
-          <IconButton
-            edge='start'
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='menu'
-          >
-            <Mail />
-          </IconButton>
-          akindkjdljfj@gmak.pcm
-        </div>
-        <div className='DevPass textDev leftDev'>
-          <IconButton
-            edge='start'
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='menu'
-          >
-            <Star />
-          </IconButton>
-          kjfldskjldfsjklfds980341*&*
-        </div>
-      </div>
-    )
-  }
+  // function DataTile () {
+  //   const classes = useStyles()
+  //   return (
+  //     <div className='DataTile'>
+  //       <div className='DevRoll textDev leftDev'>
+  //         <IconButton
+  //           edge='start'
+  //           className={classes.menuButton}
+  //           color='inherit'
+  //           aria-label='menu'
+  //         >
+  //           <ConfirmationNumber />
+  //         </IconButton>
+  //         33
+  //       </div>
+  //       <div className='DevName textDev leftDev'>
+  //         <IconButton
+  //           edge='start'
+  //           className={classes.menuButton}
+  //           color='inherit'
+  //           aria-label='menu'
+  //         >
+  //           <People />
+  //         </IconButton>
+  //         name
+  //       </div>
+  //       <div className='DevMobile textDev leftDev'>
+  //         <IconButton
+  //           edge='start'
+  //           className={classes.menuButton}
+  //           color='inherit'
+  //           aria-label='menu'
+  //         >
+  //           <Phone />
+  //         </IconButton>
+  //         4940930934
+  //       </div>
+  //       <div className='DevMail textDev leftDev'>
+  //         <IconButton
+  //           edge='start'
+  //           className={classes.menuButton}
+  //           color='inherit'
+  //           aria-label='menu'
+  //         >
+  //           <Mail />
+  //         </IconButton>
+  //         akindkjdljfj@gmak.pcm
+  //       </div>
+  //       <div className='DevPass textDev leftDev'>
+  //         <IconButton
+  //           edge='start'
+  //           className={classes.menuButton}
+  //           color='inherit'
+  //           aria-label='menu'
+  //         >
+  //           <Star />
+  //         </IconButton>
+  //         kjfldskjldfsjklfds980341*&*
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
   function DataDev () {
     if (devMode === '0') {
